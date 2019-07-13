@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+		
+	<meta charset="UTF-8">
+	<title>Document</title>adasd
+	<script>
+		//输入用户名,弹出提示
+		function uname_please(){
+			if(!uname.value){
+				msg1.innerHTML=("请输入注册用户名")
+			}else{
+				msg1.innerHTML=("")
+			}
+		}
+		function uname_tips(){
+			msg1.innerHTML=("用户名字长不能超过8")
+		}
+		//输入密码,弹出提示
+		function upwd_please(){
+			if(!upwd.value){
+				msg2.innerHTML=("请输入注册密码");
+			}else{
+				msg2.innerHTML=("");
+			}
+		}
+		function upwd_tips(){
+			msg2.innerHTML=("密码字长不能超过6")
+		}
+		//输入确认密码,弹出提示
+		function upwd2_please(){
+			if(!upwd2.value ||  upwd2.value!==upwd.value){
+				msg3.innerHTML=("请输入注册确认密码")
+			}else{
+				msg3.innerHTML=("")
+				UserReg();
+			}
+		}
+		function upwd2_tips(){
+			msg3.innerHTML=("需要密码相同")
+		}
+		//建立异步,注册用户
+		function UserReg(){
+			var $uname=uname.value;
+			var $upwd=upwd.value;
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					var result=xhr.responseText;
+					if(result==1){
+						alert("成功")
+					}else{
+						alert("失败")
+					}
+				}
+			}
+			xhr.open("post","/user/reg",true);
+			var formdata="uname="+$uname+"&upwd="+$upwd;
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			xhr.send(formdata);
+		}
+	</script>
+	<style>
+	/*		.none{*/
+	/*			border:none;*/
+	/*			outline:none;*/
+	/*		}*/
+	/*		button{*/
+	/*			width:100px;*/
+	/*			height:30px;*/
+	/*			background:*/
+	/*			background-image:linear-gradinent(to bottom,#000,#fff);*/
+	/*		}*/
+	</style>
+								
+	</head>
+	<body>                                                     
+	<tbody><a href=""></a>					
+		用户名：<input type="text" id="uname" onblur="uname_please()" onfocus="uname_tips()"><span id="msg1"></span><br>
+		密码：<input type="password" id="upwd" onblur="upwd_please()" onfocus="upwd_tips()"><span id="msg2"></span><br>
+		确认密码：<input type="password" id="upwd2" onblur="upwd2_please()" onfocus="upwd2_tips()"><span id="msg3"></span><br>
+		<button onclick="upwd2_tips()" class="none">注册用户</button>
+	</tbody>
+</body>
+</html>
