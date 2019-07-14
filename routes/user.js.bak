@@ -2,7 +2,7 @@ const express=require('express')
 const pool=require('../pool.js')
 var router=express.Router();							
 
-//用户注册页面                              
+//注册页面                              
 router.post("/reg",(req,res)=>{
 	var $uname=req.body.uname;
 	var $upwd=req.body.upwd;
