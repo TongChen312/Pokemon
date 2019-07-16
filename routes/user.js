@@ -16,14 +16,26 @@ router.post("/reg",(req,res)=>{
 
 
 //登录页面
+router.get("/login/:uname&:upwd",(req,res)=>{
+	var $uname=req.params.uname;
+	var $upwd=req.params.upwd;
+	pool.query("select * from xz_user where uname=? and upwd=?",[$uname,$upwd],(err,result)=>{
+		if(err)throw err;
+		if(result.length>0){
+			res.send("1")
+		}else{
+			res.send("0")	
+		}
+	});
+});
 
-
-
-
-
-
-//修改信息页面
-//dawdawdadd
+//宝可梦列表
+router.get("/list",(req,res)=>{
+	pool.query("select * from xz_user",(err,result)=>{
+		if(err)throw err;
+		res.send(result);
+	});
+});
 
 
 

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Pokemon列表</title>
+  <script type="text/javascript">
+	function PokemonList(){
+		//创建xhr对象
+		var xhr=new XMLHttpRequest();
+		//绑定监听,接收请求
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				var result=xhr.responseText;
+		//json解析,解析结果是对象数组
+				var arr=JSON.parse(result);
+		//将解析的结果用模板字符串的列表形式展示出来
+				var list=`	
+				<table>
+					<tr>
+						<th>编号</th>
+						<th>宝可梦名称</th>
+						<th>分类</th>
+						<th>属性</th>
+						<th>特性</th>
+						<th>描述</th>
+					</tr>`;
+				 for(var i=0;i<arr.length;i++){
+					list+=`
+						<tr>
+							<td><a href="">${arr[i].uname}</a></td>
+							<td><a href="">${arr[i].email}</a></td>
+							<td><a href="">${arr[i].phone}</a></td>
+							<td><a href="">${arr[i].user_name}</a></td>
+							<td><a href="">${arr[i].gender}</a></td>
+							<td>${arr[i].gender}</td>
+						</tr>`;
+				}
+				//将列表放入div中
+				list+=`</table>`;
+				pl.innerHTML=list;
+			}
+		}
+		//打开连接,创建请求
+		xhr.open("get","/user/list",true);
+		//发送请求
+		xhr.send(null);
+	}	
+  </script>
+ </head>
+ <body onload="">
+	<div id="pl"></div>
+	<button onclick="PokemonList()">list</button>
+ </body>
+</html>

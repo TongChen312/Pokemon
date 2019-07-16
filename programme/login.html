@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>用户登录</title>
+  <script type="text/javascript">
+	//建立xhr
+	function UserLogin(){
+		var $uname=uname.value;
+		var $upwd=upwd.value;
+	//判断用户名和密码是否为空
+		if(!$uname || !$upwd){
+			alert("请输入登陆名称或登录密码");
+			return;
+		}
+		//建立监听,接收请求
+		var xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				var result=xhr.responseText;
+				if(result=="1"){
+					alert("登录成功")9
+				}else{
+					alert("登陆失败")
+				}
+			}
+		}
+		//打开连接,创建请求
+		xhr.open("get","/user/login/"+$uname+"&"+$upwd,true);
+		//发送请求
+		xhr.send(null);
+	}
+  </script>
+ </head>
+ <body>
+	登陆名称：<input type="text" id="uname"/><br />
+	登陆密码：<input type="password" id="upwd"/><br />
+	<button onclick="UserLogin()">登录</button>
+ </body>
+</html>
