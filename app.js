@@ -2,6 +2,7 @@ const express=require('express');
 const mysql=require('mysql');
 const bodyParser=require('body-parser');
 const user=require('./routes/user.js');
+const pokemon=require('./routes/pokemon.js');
 
 var app=express();
 app.listen(8080);
@@ -12,6 +13,4 @@ app.use(bodyParser.urlencoded({
 }))
 
 app.use('/user',user);
-
-
-
+app.use('/pokemon',pokemon);

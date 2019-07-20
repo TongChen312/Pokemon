@@ -14,6 +14,14 @@ router.post("/reg",(req,res)=>{
 	});
 });
 
+//用户列表
+router.get("/list",(req,res)=>{
+	var sql="select * from xz_user";
+	pool.query(sql,(err,result)=>{
+		if(err)throw err;
+		res.send(result);
+	});
+});
 
 //登录页面
 router.get("/login/:uname&:upwd",(req,res)=>{
@@ -28,29 +36,6 @@ router.get("/login/:uname&:upwd",(req,res)=>{
 		}
 	});
 });
-
-//宝可梦列表
-router.get("/list",(req,res)=>{
-	pool.query("select * from xz_user",(err,result)=>{
-		if(err)throw err;
-		res.send(result);
-	});
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports=router;
