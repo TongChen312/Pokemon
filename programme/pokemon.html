@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="bootstrap.css">
+	<script src="jquery.min.js"></script>	
+	<script src="popper.min.js"></script>	
+	<script src="bootstrap.min.js"></script>
+	<script>
+	function zz(){
+		var hp1=15;
+		var wg1=20;
+		var wf1=15;
+		var tg1=35;
+		var tf1=55;
+		var sd1=50;
+		var wg1=15;
+		var xx=`<div style=\"width:${hp1}px;height:${sd1}px;background-color:red\"></div>`;
+		ww.innerHTML=xx;
+
+	}
+	</script>
+	<style>
+		@keyframes aa{
+			0%{
+				transform:rotate(72deg);
+			}
+			25%{
+				transform:rotate(144deg);
+			}
+			50%{
+				transform:rotate(216deg);
+			}
+			75%{
+				transform:rotate(288deg);
+			}
+			100%{
+				transform:rotate(360deg);
+			}
+		}
+		.table{
+			height:50px;
+			background:red;
+		}
+		span{
+			font:100 16px 楷体;
+		}
+		#nengli,div{
+			border:1px solid red;
+		}
+		#picture{
+			height:480px;
+			background:url(2019-07-21_153255.png) no-repeat 50%;
+			text-align:center;
+			animation:aa 30s ease-in-out alternate infinite;
+			position:relative;
+		}
+		img{
+			position:absolute;
+
+			top:0%;
+			z-index:100;
+		}
+		.container ul{
+			display:inline-block;
+			height:26px;
+		}
+
+	</style>
+</head>
+<body onload="zz()">
+	<div class="container"><div id="ww" style="width:150px;height:150px"></div>
+		<div class="row">
+			<div class="col-sm-12" id="picture"></div><img src="001Bulbasaur.png" alt="妙蛙种子">
+			<table class="table table-border table-striped bg-info col-lg-7 col-sm-12">
+				<tr>
+					<th colspan=3>宝可梦编号：&nbsp&nbsp<span>#001</span></th>
+					<th colspan=3>宝可梦名字：&nbsp&nbsp<span>妙蛙种子</span></th>		
+				</tr>
+				<tr>
+					<th colspan=3>宝可梦日文名字：&nbsp&nbsp<span>フシギダネ</span></th>
+					<th colspan=3>宝可梦英文名字：&nbsp&nbsp<span>Bulbasaur</span></th>	
+				</tr>
+				<tr>
+					<th colspan=3>属性1：&nbsp&nbsp<span>草</span></th>
+					<th colspan=3>属性2：&nbsp&nbsp<span>毒</span></th>
+				</tr>
+				<tr>
+					<th colspan=2>特性1：&nbsp&nbsp<span>茂盛</span></th>
+					<th colspan=2>特性2：&nbsp&nbsp<span>NULL</span></th>
+					<th colspan=2>隐藏特性：&nbsp&nbsp<span>叶绿素</span></th>
+				</tr>
+				<tr>
+					<th colspan=3>身高：&nbsp&nbsp<span>0.7M</span></th>
+					<th colspan=3>体重：&nbsp&nbsp<span>6.9KG</span></th>
+				</tr>
+			</table>
+			<div class="col-lg-5 col-sm-12" id="nengli">
+				<ul class="list-unstyled list-group ">
+					<p>能力值</p>
+					<li class="list-group-item py-0">HP</li>
+					<li class="list-group-item py-0">物攻</li><div id="wg"></div>
+					<li class="list-group-item py-0">物防</li><div id="wf"></div>
+					<li class="list-group-item py-0">特攻</li><div id="tg"></div>
+					<li class="list-group-item py-0">特防</li><div id="tf"></div>
+					<li class="list-group-item py-0">速度</li><div id="sd"></div>
+					<li class="list-group-item py-0">综合</li><div id="zh"></div>
+				</ul>
+			</div>	
+			<div class="col-sm-12"><span>种子种子</span></div>
+		</div>
+	</div>
+</body>
+</html>
