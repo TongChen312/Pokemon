@@ -9,6 +9,39 @@
 	<script src="popper.min.js"></script>	
 	<script src="bootstrap.min.js"></script>
 	<script>
+	function PokemonQuerry(){
+		var urlParams=new URLSearchParams(location.search);
+		var $pid=urlParams.get("pid");
+		pid.value=$pid;
+		var xhr=new XMLHttpRequest();
+		 xhr.onreadystatechange=function(){
+
+			if(xhr.readyState===4 && xhr.status===200){
+				var result=xhr.responseText;
+				console.log(result)
+				console.log(JSON.parse(result));
+				console.log(JSON.parse(result)[0]);
+				var pokemon=JSON.parse(result)[0];
+				console.log(pokemon);
+					poid.innerHTML=pokemon.poid;
+					pname.innerHTML=pokemon.pname;
+					pname1.innerHTML=pokemon.pname1;
+					pname2.innerHTML=pokemon.pname2;
+					character1.innerHTML=pokemon.character1;
+					character2.innerHTML=pokemon.character2;
+					nature.innerHTML=pokemon.nature;
+					nature2.innerHTML=pokemon.nature2;
+					snature.innerHTML=pokemon.snature;
+					height.innerHTML=pokemon.height;
+					weight.innerHTML=pokemon.weight;
+					details.innerHTML=pokemon.details;
+					p_picture.src=pokemon.p_picture;
+			}
+		}
+		xhr.open("get","/pokemon/Pquerry/"+$pid,true);
+		xhr.send();
+	}
+
 	function zz(){
 		var hp1=15;
 		var wg1=20;
@@ -17,12 +50,15 @@
 		var tf1=55;
 		var sd1=50;
 		var wg1=15;
-		var xx=`<div style=\"width:${hp1}px;height:${sd1}px;background-color:red\"></div>`;
-		ww.innerHTML=xx;
-
+//		var xx=`<div style=\"width:${hp1}px;height:${wf1}px;background-color:red\"></div>`;
+//		ww.innerHTML=xx;
 	}
 	</script>
 	<style>
+		#x{
+			position:absolute;
+/*			margin-left:20%;*/
+		}
 		@keyframes aa{
 			0%{
 				transform:rotate(72deg);
@@ -52,49 +88,42 @@
 		}
 		#picture{
 			height:480px;
-			background:url(2019-07-21_153255.png) no-repeat 50%;
 			text-align:center;
 			animation:aa 30s ease-in-out alternate infinite;
 			position:relative;
-		}
-		img{
-			position:absolute;
-
-			top:0%;
-			z-index:100;
 		}
 		.container ul{
 			display:inline-block;
 			height:26px;
 		}
-
 	</style>
 </head>
-<body onload="zz()">
-	<div class="container"><div id="ww" style="width:150px;height:150px"></div>
+<body onload="zz();PokemonQuerry()">
+	<div class="container">
+   <!-- 	<div id="ww"></div> -->
 		<div class="row">
-			<div class="col-sm-12" id="picture"></div><img src="001Bulbasaur.png" alt="妙蛙种子">
+			<div class="col-sm-12" id="picture"></div><div id="x"><img src="" alt="妙蛙种子" class="offset-sm-1 offset-md-3 offset-lg-6 offset-xl-8" id="p_picture"></div>
 			<table class="table table-border table-striped bg-info col-lg-7 col-sm-12">
 				<tr>
-					<th colspan=3>宝可梦编号：&nbsp&nbsp<span>#001</span></th>
-					<th colspan=3>宝可梦名字：&nbsp&nbsp<span>妙蛙种子</span></th>		
+					<th colspan=3>宝可梦编号：&nbsp&nbsp<span id="poid">#001</span></th>
+					<th colspan=3>宝可梦名字：&nbsp&nbsp<span id="pname">妙蛙种子</span></th>		
 				</tr>
 				<tr>
-					<th colspan=3>宝可梦日文名字：&nbsp&nbsp<span>フシギダネ</span></th>
-					<th colspan=3>宝可梦英文名字：&nbsp&nbsp<span>Bulbasaur</span></th>	
+					<th colspan=3>宝可梦日文名字：&nbsp&nbsp<span id="pname1">フシギダネ</span></th>
+					<th colspan=3>宝可梦英文名字：&nbsp&nbsp<span id="pname2">Bulbasaur</span></th>	
 				</tr>
 				<tr>
-					<th colspan=3>属性1：&nbsp&nbsp<span>草</span></th>
-					<th colspan=3>属性2：&nbsp&nbsp<span>毒</span></th>
+					<th colspan=3>属性1：&nbsp&nbsp<span id="character1">草</span></th>
+					<th colspan=3>属性2：&nbsp&nbsp<span id="character2">毒</span></th>
 				</tr>
 				<tr>
-					<th colspan=2>特性1：&nbsp&nbsp<span>茂盛</span></th>
-					<th colspan=2>特性2：&nbsp&nbsp<span>NULL</span></th>
-					<th colspan=2>隐藏特性：&nbsp&nbsp<span>叶绿素</span></th>
+					<th colspan=2>特性1：&nbsp&nbsp<span id="nature">茂盛</span></th>
+					<th colspan=2>特性2：&nbsp&nbsp<span id="nature2">NULL</span></th>
+					<th colspan=2>隐藏特性：&nbsp&nbsp<span id="snature">叶绿素</span></th>
 				</tr>
 				<tr>
-					<th colspan=3>身高：&nbsp&nbsp<span>0.7M</span></th>
-					<th colspan=3>体重：&nbsp&nbsp<span>6.9KG</span></th>
+					<th colspan=3>身高：&nbsp&nbsp<span id="height">0.7M</span></th>
+					<th colspan=3>体重：&nbsp&nbsp<span id="weight">6.9KG</span></th>
 				</tr>
 			</table>
 			<div class="col-lg-5 col-sm-12" id="nengli">
@@ -109,8 +138,22 @@
 					<li class="list-group-item py-0">综合</li><div id="zh"></div>
 				</ul>
 			</div>	
-			<div class="col-sm-12"><span>种子种子</span></div>
+			<div class="col-sm-12"><span id="details">种子种子</span></div>
 		</div>
 	</div>
+ 	编号<input type="text" id="pid"> 
+<!-- 	<input type="text" id="poid"> -->
+<!-- 	<input type="text" id="pname"> -->
+<!-- 	<input type="text" id="pname1"> -->
+<!-- 	<input type="text" id="pname2"> -->
+<!-- 	<input type="text" id="character1"> -->
+<!-- 	<input type="text" id="character2"> -->
+<!-- 	<input type="text" id="nature"> -->
+<!-- 	<input type="text" id="nature2"> -->
+<!-- 	<input type="text" id="snature"> -->
+<!-- 	<input type="text" id="height"> -->
+<!-- 	<input type="text" id="weight"> -->
+<!-- 	<input type="text" id="details"> -->
+<!-- 	<input type="text" id="p_picture"> -->
 </body>
 </html>
