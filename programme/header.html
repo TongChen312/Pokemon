@@ -7,79 +7,233 @@
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="js/jquery.min.js"></script>	
+	<script src="js/popper.min.js"></script>	
+	<script src="js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/animate.min.css">
   <style type="text/css">
-	.clear:after{
-		content:"";
-		display:block;
-		clear:both;
-	}
-	*{
-		padding:0;
-		margin:0;
+/*header*/
+	@media screen and (max-width:767px) {
+		header{display:none !important;}
+		nav #logo{border:none;box-shadow:none;}
+		nav{text-align:center;display:flex}
+		nav li{background:white;min-width:75%;}
+		nav .nav-link,nav .nav-item{padding:0;margin:1px;}
+		nav .nav-link{box-shadow:1px 1px 1px 1px gray}
+		nav a{border-bottom:none !important;font:none !important;}
+		[commodity]{position:absolute;top:4%;right:8%;}
+		[commodity]>img{display:block !important;}
+		[handbook]{position:absolute;top:50%;right:8%;}
+		[handbook]>img{display:block !important;}
 	}
 	#top-logo{
-		width:100%;
 		height:62px;
-		padding:2px 15% 0 15%;
 		border-bottom:2px solid #dedede;
+		overflow:hidden;
 	}
-	#top-logo img{
-		width:79px;
-		height:45px;
-		margin-top:5px;
+	/* logo-shackd 短logo过渡	*/
+	.logo-shack{
+		transition:all 0.5s ease;
+	}
+	.logo-shack:hover{
+		transform:translate(0px,5px);
+	}
+	/* long-logo 长logo动画	*/
+	@keyframes swing{
+		0%{transform:rotate(1deg);opacity:1;}
+		25%{transform:rotate(2deg);opacity:0.5;}
+		75%{transform:rotate(-1deg);opacity:0.5}
+		100{transform:rotate(-2deg);opacity:1;}
+	}
+	.long-logo{
+		width:148px !important;
+		transition:all 0.5s ease;
+		box-shadow:-1px -1px 0 1px #0004;
+	}
+	.long-logo:hover{
+		animation: swing 1s ease;
+	}
+/*nav*/
+	nav li{
+		width: calc(100%/8);
+		overflow:hidden;
+		text-align:center;
+		margin:4px;
+	}
+	nav ul a{
+		font:bold 1.4rem 楷体;
+		border-radius:3%;
+	}
+	/*nav过渡*/
+	[cartoon]{
+		color:#03a9f4;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #03a9f4;
+	}
+	[cartoon]:hover{
+		color:white !important;
+		background:#03a9f4;
+	}
+	[movie]{
+		color:#ff9600;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #ff9600;
+	}
+	[movie]:hover{
+		color:white !important;
+		background:#ff9600;
+	}
+	[commodity]{
+		color:#4caf50;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #4caf50;
+	}
+	[commodity]:hover{
+		color:white !important;
+		background:#4caf50;
+	}
+	[application]{
+		color:#9c27b0;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #9c27b0;
+	}
+	[application]:hover{
+		color:white !important;
+		background:#9c27b0;
+	}
+	[game]{
+		color:#f44336;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #f44336;
+	}
+	[game]:hover{
+		color:white !important;
+		background:#f44336;
+	}
+	[card]{
+		color:#3f51b5;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #3f51b5;
+	}
+	[card]:hover{
+		color:white !important;
+		background:#3f51b5;
+	}
+	[active]{
+		color:#795548;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #795548;
+	}
+	[active]:hover{
+		color:white !important;
+		background:#795548;
+	}
+	[handbook]{
+		color:#000;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #000;
+	}
+	[handbook]:hover{
+		color:white !important;
+		background:#000;
+	}
+	[handbook]>img{
+		transition:all 0.5s linear;
+	}
+	[handbook]>img:hover{
+		background:white;
+	}
+
+	/**/
+	#logo:hover{
+		transform:scale(1.3);
+		opacity:0.8;
 	}
 	#logo{
-		float:left;
-		width:85px;
-		text-align:center;
-		box-shadow:3px 1px 3px 1px #222222b8;
-		border:1px #000;
+		box-shadow:1px 1px 1px 1px gray;
 		border-radius:50%;
+		transition:all 0.3s ease;
 	}
-	.top-longer{
-		margin:5px 0px 5px 4px; 
-		width:148px !important;
-		height:50px !important;
+	button{
+		position:absolute;
+		left:1rem;top:0.5rem;
 	}
-	#top-logo .top-shorter{margin:8px 2px 0px 2px;}
-	ul{	
-		width:900px;
-		height:62px;
-		text-align:center;
-		list-style-type:none;
-	}
-	li{float:left;}
   </style>
  </head>
  <body>
 	<header>
 <!--网页头的logo-->	
-		<div id="top-logo" class="clear">
-			<div id="logo"><a href=""><img src="../img/logo/logo-pokemon-79x45.png" alt="" ></a></div>
-			<ul>
-				<li>
-					<a href=""><img src="../img/logo/logo-pokemoncenter-79x45.png" alt="" class="top-shorter"></a>
+ 		<div id="top-logo">
+			<ul class="nav justify-content-center">
+				<li class="nav-item">
+					<a href="" class="nav-link logo-shack"><img src="img/logo/logo-pokemoncenter-79x45.png" class="top-shorter"></a>
 				</li>
-				<li>
-					<a href=""><img src="../img/logo/logo-tcgo-79x45.png" alt="" class="top-shorter"></a>
+				<li class="nav-item">
+					<a href="" class="nav-link logo-shack"><img src="img/logo/logo-tcgo-79x45.png" class="top-shorter"></a>
 				</li>
-				<li>
-					<a href=""><img src="../img/logo/logo-pgl-79x45.png" alt="" class="top-shorter"></a>
+				<li class="nav-item">
+					<a href="" class="nav-link logo-shack"><img src="img/logo/logo-pgl-79x45.png" class="top-shorter"></a>
 				</li>
-				<li>
-					<a href=""><img src="../img/logo/sword-shield-promo-gus-237x80-en.jpg" alt=""  class="top-longer"></a>
+				<li class="nav-item">
+					<a href="" class="nav-link"><img src="img/logo/sword-shield-promo-gus-237x80-en.jpg" class="long-logo"></a>
 				</li>
-				<li>
-					<a href="" ><img src="../img/logo/sm10-promo-gus-237x80-en.jpg" alt="" class="top-longer"></a>
+				<li class="nav-item">
+					<a href="" class="nav-link"><img src="img/logo/sm10-promo-gus-237x80-en.jpg" class="long-logo"></a>
 				</li>
-				<li>
-					<a href="" ><img src="../img/logo/promo-app-gallery-237x80.jpg" alt="" class="top-longer"></a>
+				<li class="nav-item">
+					<a href="" class="nav-link"><img src="img/logo/promo-app-gallery-237x80.jpg" class="long-logo"></a>
+				</li>
+				<li class="nav-item">
+					<a href="" class="nav-link"><img src="img/logo/pokemon-quest-gus-large.jpg" class="long-logo"></a>
+				</li>
+				<li class="nav-item">
+					<a href="" class="nav-link"><img src="img/logo/lets-go-pikachu-eevee-gus-large-en.jpg" class="long-logo"></a>
 				</li>
 			</ul>
 		</div>
 	</header>
 <!--导航-->
-	<nav>
-	</nav>
+ 	<nav class="navbar navbar-expand-md navbar-light bg-light row py-0 mt-1"> 
+			<a href="" class="navbar-brand col-md-auto px-0 ml-3">
+				<img src="img/logo/logo-pokemon-79x45.png" id="logo">
+			</a>
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#content">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-md-between justify-content-lg-around col-lg-11 pl-0" id="content">
+				<ul class="navbar-nav" style="width:100%;">
+					<li class="nav-item">
+						<a href="" class="nav-link" cartoon><span>动画</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link" movie>电影</a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link" commodity >
+							<img src="img/icon/icons8-pokebag-50-2.png" alt="" class="d-none"/>商品
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link" application>应用</a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link" game>游戏</a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link" card>卡牌</a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link" active>活动</a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link" handbook>
+							<img src="img/icon/icons8-图鉴-50.png" alt="" class="d-none"/>图鉴
+						</a>
+					</li>
+				</ul>
+			</div>
+ 	</nav> 
+	<div style="width:200px;height:200px;background-color:red"></div>
  </body>
 </html>
