@@ -12,60 +12,114 @@
 	<script src="js/popper.min.js"></script>	
 	<script src="js/bootstrap.min.js"></script>
 <!-- 	<link rel="stylesheet" href="css/animate.min.css"> -->
-  <style type="text/css">
-		.carousel-control-prev,
-		.carousel-control-next{
+	<style type="text/css">
+		/* 海报轮播图左右箭头样式 */
+		#poster .carousel-control-prev,
+		#poster .carousel-control-next{
 			width:4%;
 			height:16%;
 			background:#0008;
 			border-radius:25rem;
 			top:42%;
 		}
-		.carousel-indicators li{
+		/* 海报轮播图指示器样式 */
+		#poster .carousel-indicators li{
 			width:2rem;height:2rem;
 			background-color:white;
 			margin-left:3rem;
 			margin-right:3rem;
 			border-radius:50%;
 		}
-		.carousel-indicators .active{
-			background-color:#000;
+		#poster .carousel-indicators .active{background-color:#000;}
+		.card{background:#0002}
+		/* 新闻和资讯卡的样式 */
+		.container .card{border-radius:3%;border:none;}
+		.container .card>img{border-top-left-radius:3%;border-top-right-radius:3%;}
+		/* 新闻特殊样式 */
+		.snew>img{border-top-right-radius:0% !important;border-bottom-left-radius:3%;}
+		/* 背景颜色 */
+		.bg-brown{background:#675945 !important;}
+		.bg-yellow{background:#e6bc2f !important;}
+		.bg-redorange{background:#E3350D !important;}
+		.bg-orange{background: #ee6b2f !important;}
+		.bg-lightblue{background: #30a7d7 !important;}
+		.bg-darkblue{background: #1847d7 !important;}
+		.bg-gray{background:#a4a4a4 !important;}
+		.bg-darkgray{background: #313131 !important;}
+		.bg-green{background:#4dad5b !important;}
+		.bg-pink{background:#ff90c4 !important;}
+		/* 宽度85% */
+		.w-85{width:85% !important}
+		/* 资讯卡中心的小标题 */
+		@media screen and (min-width:992px){
+			.new{display:block;padding:1rem;text-align: center}
 		}
-		#c1>div,#c2>div,#c3>div,#c4>div,#c5>div,#c6>div,{
-/*			background:red !important;*/
-			height:300px;
+		@media screen and (max-width:991px){
+			.new{display: none}
 		}
-		#c1>div{
-			background:red;
-		} 
+		/* 资讯卡弹性宽度 */
+		@media screen and (min-width:768px){
+			.zxcard{width:78.5% !important;}
+		}
+		@media screen and (max-width:767px){
+			.zxcard{width:85% !important;}
+		}
+		/* 资讯卡的微调 */
+		#new-card h4,#news h4{color:#fff;font:1.5rem 华文新魏;text-align:center;}
+		#new-card span,#news span{color:#fff;font:1rem 华文细黑;text-align:center;}
+		@media screen and (min-width:992px){#new-card div.card{height:20rem !important}}
+		@media screen and (max-width:992px) and (min-width:768px){
+			#new-card div.card{height:25rem !important}
+			.ml-375{margin-left:0.375rem !important;}
+			.mr-375{margin-right:0.375rem !important;	}
+		}
+		@media screen and (max-width:767px){
+			#new-card div.card{height:28rem !important;}
+			#new-card h4{font-size:2rem;margin-top:1rem}
+			#new-card span{font-size:1.2rem;line-height:200%;margin-top:0.8rem}
+			/* 新闻的特殊卡片微调 */
+				#news .snew h4{
+					font-size:3rem;
+					margin:4rem 0 2rem 0;
+				}
+				#news .snew span{
+					font-size:1.2rem;
+				}
+
+		}
+		/* 卡片的选中变亮过渡 */
+		div.card:hover{opacity:0.92}
 	</style>
 	<body>
 		<header>
 			<iframe src="header.html" frameborder="0"  scrolling="no" width="100%" height=""></iframe>
-	  </header>
+	  	</header>
 		<hr>
-		<div class="carousel" data-ride="carousel" id="poster">
+		<!-- 轮播图 -->
+		<div class="carousel mb-lg-5 mb-md-3 mb-sm-1" data-ride="carousel" id="poster">
+			<!-- 轮播内容 -->
 			<div class="carousle-inner text-center">
 				<div class="carousel-item active">
-					<img src="img/poster/1280x458 (2)-thumb-1280x458-13513.jpg"  class="w-75">
+					<img src="img/poster/1280x458 (2)-thumb-1280x458-13513.jpg"  class="w-100">
 				</div>
 				<div class="carousel-item">
-					<img src="img/poster/a333d6b0d26a81b4a3cef3bba13785c1300b26ce-thumb-128-thumb-1280x458-11940.jpg"  class="w-75">
+					<img src="img/poster/a333d6b0d26a81b4a3cef3bba13785c1300b26ce-thumb-128-thumb-1280x458-11940.jpg"  class="w-100">
 				</div>
 				<div class="carousel-item">
-					<img src="img/poster/0faf9b805cc71d1c3f8513e63735bdcc17cf9d8b-thumb-1280x458-12717.jpg" class="w-75">
+					<img src="img/poster/0faf9b805cc71d1c3f8513e63735bdcc17cf9d8b-thumb-1280x458-12717.jpg" class="w-100">
 				</div>
 				<div class="carousel-item">
-					<img src="img/poster/animetoppc-thumb-1280x458-13461.jpg" class="w-75">
+					<img src="img/poster/animetoppc-thumb-1280x458-13461.jpg" class="w-100">
 				</div>
 			</div>
-
-				<a href="#poster" class="carousel-control-prev" data-slide="prev">
-					<span class="carousel-control-prev-icon"></span>
-				</a>
-				<a href="#poster" class="carousel-control-next" data-slide="next">
-					<span class="carousel-control-next-icon"></span>
-				</a>
+			<!-- 左右箭头 -->
+			<a href="#poster" class="carousel-control-prev" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+			</a>
+			<a href="#poster" class="carousel-control-next" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+			<!-- 轮播指示器 -->
 			<ul class="carousel-indicators">
 				<li class="active" data-slide-to="0" data-target="#poster"></li>
 				<li data-slide-to="1" data-target="#poster"></li>
@@ -73,86 +127,134 @@
 				<li data-slide-to="3" data-target="#poster"></li>
 			</ul>
 		</div>
-		<div class="container w-75">
-		<div class="row mx-0" id="card">
-      <!--左-->
-			<div class="col-md-8 px-0">
-				<div class="row mx-0">
-					<!--左大1-->
-					<div class="col-12 px-0" id="c1">
-						<div class="card mr-lg-5">
-							<div class="card-header">
-								<img src="img/card/pokemon-masters-starters-guide-animated-169.gif" alt="" class="w-100">
-							</div>
-							<div class="card-body">
-								<h4>开启神奇宝贝大师赛</h4>
-								了解同步配对，以及如何训练它们在即将到来的手机游戏中与最顽强的敌人较量。
+
+		<!-- 最新动态 -->
+		<div class="container w-85 px-0" id="news">
+			<!-- 头部栅格布局 -->
+			<div class="row mx-0">
+				<!-- 头部左边 -->
+				<div class="col-lg-8  px-0 ">
+					<!-- 左大 -->
+					<div class="card mr-lg-3 mb-lg-3 mb-md-2 mb-sm-2 bg-darkgray">
+						<img src="img/card/pokemon-masters-starters-guide-animated-169.gif" class="w-100">
+						<h4 class="py-lg-2 py-md-2">开启神奇宝贝大师赛</h4>
+						<span class="py-2">了解同步配对，以及如何训练它们在即将到来的手机游戏中与最顽强的敌人较量.</span>
+					</div>
+					<!-- 左下 -->
+					<div class="row mx-0">
+						<!-- 左下1 -->
+						<div class="col-md-6 px-0">
+							<div class="card mr-lg-3 mr-md-1 mb-lg-0 mb-md-2 mb-sm-2 bg-darkblue">
+								<img src="img/card/sword-shield-169-en.jpg" class="w-100"/>
+								<h4 class="py-lg-5 py-md-2">看巨人神奇宝贝的奇观！</h4>
 							</div>
 						</div>
-					</div>
-          <!--左小1-->
-					<div class="col-6" id="c2">
-						<div class="card">
-							<div class="card-header">
-								<img src="img/card/sword-shield-169-en.jpg" class="w-100" alt="" />
-							</div>
-							<div class="card body">
-								<h4>看巨人神奇宝贝的奇观！</h4>
-							</div>
-						</div>
-					</div>
-					<!--左小2-->
-					<div class="col-6" id="c3">
-						<div class="card">
-							<div class="card-header">
-								<img src="img/card/sm11-featured-cards-3-169-en.jpg" alt="" class="w-100">
-							</div>
-							<div class="card-body">
-								<h4>太阳和月亮—统一的思想</h4>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-      <!--右-->
-			<div class="col-md-4">
-				<div class="row">
-          <!--右小1-->
-					<div class="col-12" id="c4">
-						<div class="card">
-							<div class="card-header">
-								<img src="img/card/pokemon-masters-169-m.jpg" class="w-100" alt="" />
-							</div>
-							<div class="card-body">
-								<h4>玩神奇宝贝大师预注册</h4>
-							</div>
-						</div>
-					</div>
-					<!--右小2-->
-					<div class="col-12" id="c5">
-						<div class="card">
-							<div class="card-header">
-								<img src="img/card/pokemon-go-august-2019-community-day-169-m.jpg" class="w-100" alt="" />
-							</div>
-							<div class="card-body">
-								<h4>拉鲁拉丝将在八月份世界各地出现</h4>
+						<div class="col-md-6 col-sm-12 px-0">
+						<!-- 左下2 -->
+							<div class="card mr-lg-3 ml-md-1 ml-lg-0 mb-lg-0 mb-md-2 mb-sm-2 bg-secondary">
+								<img src="img/card/sm11-featured-cards-3-169-en.jpg" class="w-100">
+								<h4 class="py-lg-5 py-md-2">太阳和月亮—统一的思想</h4>
 							</div>
 						</div>	
 					</div>
-					<!--右小3-->
-					<div class="col-12" id="c6">
-						<div class="card">
-							<div class="card-header">
-								<img src="img/card/pc-eevee-pixel-collection-34.jpg" class="w-50" alt="" />
+				</div>
+
+			<!-- 头部右边 -->
+				<div class="col-lg-4">
+					<div class="row">
+						<!-- 右边1 -->
+						<div class=" col-md-4 col-lg-12 px-0 mb-sm-2 mb-lg-3">
+							<div class="card mx-0 mr-lg-0 mr-md-2 bg-warning">
+								<img src="img/card/pokemon-masters-169-m.jpg" class="w-100"/>
+								<h4 class="py-lg-4 py-md-2">玩神奇宝贝大师预注册</h4>
 							</div>
-							<div class="card-body">
-								<h4>Eevee在神奇宝贝中心复古</h4>
+						</div>
+						<!-- 右边2 -->
+						<div class="col-md-4 col-lg-12  px-0">
+							<div class="card mx-0 mb-3 mr-md-2 mr-lg-0 mb-sm-2 mb-lg-3 bg-green">
+								<img src="img/card/pokemon-go-august-2019-community-day-169-m.jpg" class="w-100 " />
+								<h4 class="py-lg-4">拉鲁拉丝将在八月份世界各地出现</h4>
+							</div>
+						</div>
+						<div class="col-md-4 col-lg-12 px-0">
+						<!-- 右边3 -->
+							<div class="card mx-0 flex-row snew bg-pink">
+								<img src="img/card/pc-eevee-pixel-collection-34.jpg" class="w-50"/>
+								<div>
+									<h4 class="py-lg-4">新的Eevee Pixel系列!</h4>
+									<span>大家都非常喜欢伊布,因为它真的有很多进化型态~</span>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<br>
+		<br>
+
+
+		<!-- 尾部栅格 -->
+		<div class="container zxcard px-0" id="new-card">
+		<div class="row mx-0">
+			<!-- 左边 -->
+			<div class="col-lg-4 col-md-6 col-sm-12 px-0  mt-lg-5">
+				<!-- 左1 -->
+				<div class="card mx-0 mr-md-2 mb-sm-2 mb-lg-3 bg-gray">
+					<img src="img/card/play-pokemon-169.jpg" class="w-100">
+					<h4>在PlayPokemon上关注神奇宝贝游戏报道</h4>
+					<span>在新的Play上获取最新的策略提示,活动新闻等!神奇宝贝Twitter账户.</span>
+				</div>
+				<!-- 左2 -->
+				<div class="card mx-0 mr-md-2 mb-sm-2 bg-lightblue">
+					<img src="img/card/tcg-porygon-z-gx-box-169-en.jpg" class="w-100">
+					<h4>战斗吧!3D龙Z</h4>
+					<span>凭借神奇宝贝Poryg(3D龙),您可以获得胜利.</span>
+				</div>
+			</div>
+			<!-- 中 -->
+			<div class="col-lg-4 col-md-6 col-sm-12 px-0">
+				<!-- 中1 -->
+				<div class="card mx-0 ml-md-1 mr-md-1 mb-sm-2 mb-lg-3 bg-yellow">
+					<img src="img/card/detective-pikachu-home-video-169-en.jpg" class="w-100">
+					<h4>将侦探皮卡丘带回家</h4>
+					<span>现在你可以购买蓝光光碟<口袋妖怪皮卡丘>,而且有一张特殊的TCG卡</span>
+				</div>
+				<!-- 中间的小标题 -->
+				<div>
+					<h1 class="new">新动态</h1>
+				</div>
+				<!-- 中2 -->
+				<div class="card mx-0 ml-md-1 mr-md-1 mb-sm-2 bg-darkgray">
+					<img src="img/card/pokemon-go-team-rocket-169.jpg" class="w-100">
+					<h4>Pokemon Go出现黑化神奇宝贝</h4>
+					<span>在PokeStops中挑战火箭队利用装置控制的黑化神奇宝贝,并净化它们,将其放入到自己的队伍里!</span>
+				</div>
+			</div>
+			<!-- 右 -->
+			<div class="col-lg-4 col-sm-12 px-0 mt-lg-5">
+				<div class="row mx-0 flex-row">
+					<!-- 右1 -->
+					<div class="col-lg-12 col-md-6 col-sm-12 px-0">
+						<div class="card px-0 mx-0 mr-lg-0 ml-lg-2 mb-sm-2 mb-lg-3 mr-375 bg-darkblue">
+							<img src="img/card/pokemon-duel-169.jpg" class="w-100">
+							<h4>Pokemon Duel服务器的关闭</h4>
+							<span>宝可梦战斗手游的服务将于2019年10月31日结束,非常感谢一直以来对我们的大力支持.</span>
+						</div>
+					</div>
+					<!-- 右2 -->
+					<div class="col-lg-12 col-md-6 col-sm-12 px-0 ">
+						<div class="card px-0 mx-0 ml-lg-2 ml-lg-0 mb-sm-2 mb-lg-3 ml-375 bg-redorange">
+							<img src="img/card/pokemon-rumble-rush-169.jpg" class="w-100">
+							<h4>"进击吧,宝可梦"将登陆手机版</h4>
+							<span>旅行到未知的岛屿,战斗野生宠物小精灵,并在这个热闹而又刺激的远征中发现宝贵的东西.</span>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+
+
+	</div>
 	</body>
 </html>
