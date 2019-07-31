@@ -13,7 +13,145 @@
 	<script src="js/bootstrap.min.js"></script>
 <!-- 	<link rel="stylesheet" href="css/animate.min.css"> -->
 	<style type="text/css">
-		/* 海报轮播图左右箭头样式 */
+/*header*/
+	@media screen and (max-width:767px) {
+		header{display:none !important;}
+		nav #logo{border:none;box-shadow:none;}
+		nav{text-align:center;}
+		nav li{background:white;min-width:75%;}
+		nav .nav-link,nav .nav-item{padding:0;margin:1px;}
+		nav .nav-link{box-shadow:1px 1px 1px 1px gray}
+		nav a{border-bottom:none !important;font:none !important;}
+		[commodity]{position:absolute;top:4%;right:8%;}
+		[commodity]>img{display:block !important;}
+		[handbook]{position:absolute;top:50%;right:8%;}
+		[handbook]>img{display:block !important;}
+	}
+	#top-logo{
+		height:62px;
+		border-bottom:2px solid #dedede;
+		overflow:hidden;
+	}
+	/* logo-shackd 短logo过渡	*/
+	.logo-shack{
+		transition:all 0.5s ease;
+	}
+	.logo-shack:hover{
+		transform:translate(0px,5px);
+	}
+	/* long-logo 长logo动画	*/
+	@keyframes swing{
+		0%{transform:rotate(1deg);opacity:1;}
+		25%{transform:rotate(2deg);opacity:0.5;}
+		75%{transform:rotate(-1deg);opacity:0.5}
+		100{transform:rotate(-2deg);opacity:1;}
+	}
+	.long-logo{
+		width:148px !important;
+		transition:all 0.5s ease;
+		box-shadow:-1px -1px 0 1px #0004;
+	}
+	.long-logo:hover{
+		animation: swing 1s ease;
+	}
+/*nav*/
+	nav li{
+		width: calc(100%/8);
+		overflow:hidden;
+		text-align:center;
+		margin:4px;
+	}
+	nav ul a{
+		font:bold 1.4rem 楷体;
+		border-radius:3%;
+	}
+	/*nav过渡*/
+	[cartoon]{
+		color:#03a9f4;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #03a9f4;
+	}
+	[cartoon]:hover{
+		color:white !important;
+		background:#03a9f4;
+	}
+	[movie]{
+		color:#ff9600;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #ff9600;
+	}
+	[movie]:hover{
+		color:white !important;
+		background:#ff9600;
+	}
+	[commodity]{
+		color:#4caf50;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #4caf50;
+	}
+	[commodity]:hover{
+		color:white !important;
+		background:#4caf50;
+	}
+	[application]{
+		color:#9c27b0;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #9c27b0;
+	}
+	[application]:hover{
+		color:white !important;
+		background:#9c27b0;
+	}
+	[game]{
+		color:#f44336;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #f44336;
+	}
+	[game]:hover{
+		color:white !important;
+		background:#f44336;
+	}
+	[card]{
+		color:#3f51b5;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #3f51b5;
+	}
+	[card]:hover{
+		color:white !important;
+		background:#3f51b5;
+	}
+	[active]{
+		color:#795548;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #795548;
+	}
+	[active]:hover{
+		color:white !important;
+		background:#795548;
+	}
+	[handbook]{
+		color:#000;
+		transition:all 0.5s linear;
+		border-bottom:4px solid #000;
+	}
+	[handbook]:hover{
+		color:white !important;
+		background:#000;
+	}
+	#logo:hover{
+		transform:scale(1.1);
+		opacity:0.8;
+	}
+	#logo{
+		box-shadow:0.1px 0.1px 1px 1px #0001;
+		border-radius:2%;
+		transition:all 0.3s ease;
+	}
+	button{
+		position:absolute;
+		left:2rem;top:1.5rem;
+	}
+/* 海报轮播图左右箭头样式 */
 		#poster .carousel-control-prev,
 		#poster .carousel-control-next{
 			width:4%;
@@ -32,7 +170,7 @@
 		}
 		#poster .carousel-indicators .active{background-color:#000;}
 		.card{background:#0002}
-		/* 新闻和资讯卡的样式 */
+/* 新闻和资讯卡的样式 */
 		.container .card{border-radius:3%;border:none;}
 		.container .card>img{border-top-left-radius:3%;border-top-right-radius:3%;}
 		/* 新闻特殊样式 */
@@ -50,19 +188,28 @@
 		.bg-pink{background:#ff90c4 !important;}
 		/* 宽度85% */
 		.w-85{width:85% !important}
+		@keyframes small{
+			0%{transform:scale(2);}
+			100%{transform:scale(1);}
+		}
 		/* 资讯卡中心的小标题 */
 		@media screen and (min-width:992px){
-			.new{display:block;padding:1rem;text-align: center}
+			.new{display:block;padding:1rem;text-align: center;
+			/* 缩放动画 */
+			animation:small 0.3s linear 1s;animation-fill-mode :both;
+			/* 文本阴影 */
+			text-shadow:2px 2px 2px gray;
+			}
 		}
 		@media screen and (max-width:991px){
 			.new{display: none}
 		}
 		/* 资讯卡弹性宽度 */
 		@media screen and (min-width:768px){
-			.zxcard{width:78.5% !important;}
+			#new-card{width:78.5% !important;}
 		}
 		@media screen and (max-width:767px){
-			.zxcard{width:85% !important;}
+			#new-card{width:85% !important;}
 		}
 		/* 资讯卡的微调 */
 		#new-card h4,#news h4{color:#fff;font:1.5rem 华文新魏;text-align:center;}
@@ -71,12 +218,14 @@
 		@media screen and (max-width:992px) and (min-width:768px){
 			#new-card div.card{height:25rem !important}
 			.ml-375{margin-left:0.375rem !important;}
-			.mr-375{margin-right:0.375rem !important;	}
+			.mr-375{margin-right:0.375rem !important;}
+			#new-card h4{margin-top:2rem}
+			#new-card span{margin-top:0.8rem}
 		}
 		@media screen and (max-width:767px){
-			#new-card div.card{height:28rem !important;}
+			#new-card div.card{height:32rem !important;}
 			#new-card h4{font-size:2rem;margin-top:1rem}
-			#new-card span{font-size:1.2rem;line-height:200%;margin-top:0.8rem}
+			#new-card span{font-size:1.2rem;line-height:200%;margin-top:1rem}
 			/* 新闻的特殊卡片微调 */
 				#news .snew h4{
 					font-size:3rem;
@@ -89,11 +238,214 @@
 		}
 		/* 卡片的选中变亮过渡 */
 		div.card:hover{opacity:0.92}
+		/* 资讯卡的多重阴影 */
+		#new-card div.card{
+			box-shadow: 1px 1px 1px  gray,
+						2px 2px 1px  gray,
+						3px 3px 1px  rgba(255,255,0,0.1),
+						4px 4px 1px  rgba(255,255,0,0.1),
+						5px 5px 1px  #0001,
+						6px 6px 1px  #0001;
+		}
+/* 资讯卡的动画 */
+		@keyframes left1{
+			0%{transform: translate(0px,0px)}
+			50%{transform: translate(-70px,-70px)}
+			100%{transform: translate(-100px,-100px)}
+		}
+		@keyframes left2{
+			0%{transform: translate(0px,0px)}
+			50%{transform: translate(-70px,70px)}
+			100%{transform: translate(-100px,100px)}
+		}
+		@keyframes mid1{
+			0%{transform: translateY(0px)}
+			50%{transform: translateY(-70px)}
+			100%{transform: translateY(-100px)}
+		}
+		@keyframes mid2{
+			0%{transform: translateY(0px)}
+			50%{transform: translateY(70px)}
+			100%{transform: translateY(100px)}
+		}
+		@keyframes right1{
+			0%{transform: translate(0px,0px)}
+			50%{transform: translate(70px,-70px)}
+			100%{transform: translate(100px,-100px)}
+		}
+		@keyframes right2{
+			0%{transform: translate(0px,0px)}
+			50%{transform: translate(70px,70px)}
+			100%{transform: translate(100px,100px)}
+		}
+		@media screen and (min-width:992px){
+			#new-card div.card{
+				animation:left1 0.3s linear 1s 1 reverse;
+				animation-fill-mode :both;
+			}
+			#new-card #left2{animation-name: left2}
+			#new-card #mid1{animation-name: mid1}
+			#new-card #mid2{animation-name: mid2}
+			#new-card #right1{animation-name: right1}
+			#new-card #right2{animation-name: right2}
+		}
+/*footer样式*/
+		/*a标签前的三角形箭头*/
+		footer ul a:before{
+			color:#616161;
+			content:"\25b6";
+		}
+		footer a:hover{
+			color:white;
+			text-decoration:none;
+		}
+		footer a{
+				color:#616161;
+				text-decoration:none;
+			}
+		/*媒体查询*/
+		@media screen and (min-width:992px){
+			footer ul a{
+				font:1.1rem Tahoma;
+			}
+			footer span~span{
+				margin-top:1.2rem;
+				display:block;
+			}
+		}
+		@media screen and (max-width:991px) and (min-width:768px){
+			footer a,footer span{
+				font:0.9rem Tahoma;
+			}
+			footer p{
+				text-align:center;
+			}
+			footer div:nth-child(3){
+				text-align:center;
+			}	
+		}
+		@media screen and (max-width:768px){
+			footer a,footer p,footer span{
+				font:bold 0.5rem Tahoma;
+			}
+			div.col-lg-4.col-sm-6.px-0.mt-sm-4{
+				margin:0 auto;
+			}
+			p.w-100{
+				text-align:center;
+			}
+			footer div:nth-child(3){
+				text-align:center;
+			}	
+			footer img{
+				transform:scale(0.8)
+			}
+		}
+		.container>:nth-child(2){
+			border-left:1px solid black;
+		}
+		footer{
+			background:#1f1f1f;
+		}
+		footer div:nth-child(2)>div:first-child a{
+			width:35px;
+			height:34px;
+			display:inline-block;
+		}
+		#partner div:first-child a{
+			background:url(img/icon/social-icons.png);
+		}
+		/*合作伙伴精灵图*/
+		#partner div:first-child a:nth-child(2){background-position:-35px 0px;}
+		#partner div:first-child a:nth-child(3){background-position:-70px 0px;}
+		#partner div:first-child a:nth-child(4){background-position:-105px 0px;}
+		#partner div:first-child a:nth-child(5){background-position:-140px 0px;}
+		#partner div:first-child a:nth-child(6){background-position:-175px 0px;}
+		#partner div:first-child a:nth-child(7){background-position:-210px 0px;}
+		#partner div~div a:first-child img,
+		#partner div~div a:nth-child(2) img,
+		#partner div~div a:nth-child(3) img{
+			width:75px;
+		}
+		p{color:white;font-weight:bold}
+		footer p[style]>a{color:white}
+		footer span{color:#888}
+
 	</style>
 	<body>
+<!--网页头的logo-->	
 		<header>
-			<iframe src="header.html" frameborder="0"  scrolling="no" width="100%" height=""></iframe>
-	  	</header>
+			<div id="top-logo">
+				<ul class="nav justify-content-center">
+					<li class="nav-item">
+						<a href="" class="nav-link logo-shack"><img src="img/logo/logo-pokemoncenter-79x45.png" class="top-shorter"></a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link logo-shack"><img src="img/logo/logo-tcgo-79x45.png" class="top-shorter"></a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link logo-shack"><img src="img/logo/logo-pgl-79x45.png" class="top-shorter"></a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link"><img src="img/logo/sword-shield-promo-gus-237x80-en.jpg" class="long-logo"></a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link"><img src="img/logo/sm10-promo-gus-237x80-en.jpg" class="long-logo"></a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link"><img src="img/logo/promo-app-gallery-237x80.jpg" class="long-logo"></a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link"><img src="img/logo/pokemon-quest-gus-large.jpg" class="long-logo"></a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link"><img src="img/logo/lets-go-pikachu-eevee-gus-large-en.jpg" class="long-logo"></a>
+					</li>
+				</ul>
+			</div>
+		</header>
+<!--导航-->
+ 	<nav class="navbar navbar-expand-md navbar-light bg-light row py-0 mt-1" id="orgTree"> 
+		<a href="" class="navbar-brand col-md-auto px-0 ml-3 mr-0">
+			<img src="img/logo/logo.png" id="logo">
+		</a>
+		<!--导航按钮-->
+		<button class="navbar-toggler" data-toggle="collapse" data-target="#content">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-md-between justify-content-lg-around col-lg-10 pl-0" id="content">
+			<ul class="navbar-nav" style="width:100%;">
+				<li class="nav-item">
+					<a href="" class="nav-link" cartoon><span>动画</span></a>
+				</li>
+				<li class="nav-item">
+					<a href="" class="nav-link" movie>电影</a>
+				</li>
+				<li class="nav-item">
+					<a href="" class="nav-link" commodity >
+						<img src="img/icon/icons8-pokebag-50-2.png" alt="" class="d-none"/>商品
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="" class="nav-link" application>应用</a>
+				</li>
+				<li class="nav-item">
+					<a href="" class="nav-link" game>游戏</a>
+				</li>
+				<li class="nav-item">
+					<a href="" class="nav-link" card>卡牌</a>
+				</li>
+				<li class="nav-item">
+					<a href="" class="nav-link" active>活动</a>
+				</li>
+				<li class="nav-item">
+					<a href="" class="nav-link" handbook>
+						<img src="img/icon/icons8-图鉴-50.png" alt="" class="d-none"/>图鉴
+					</a>
+				</li>
+			</ul>
+		</div>
+ 	</nav> 
 		<hr>
 		<!-- 轮播图 -->
 		<div class="carousel mb-lg-5 mb-md-3 mb-sm-1" data-ride="carousel" id="poster">
@@ -119,7 +471,7 @@
 			<a href="#poster" class="carousel-control-next" data-slide="next">
 				<span class="carousel-control-next-icon"></span>
 			</a>
-			<!-- 轮播指示器 -->
+<!-- 轮播指示器 -->
 			<ul class="carousel-indicators">
 				<li class="active" data-slide-to="0" data-target="#poster"></li>
 				<li data-slide-to="1" data-target="#poster"></li>
@@ -130,7 +482,7 @@
 
 		<!-- 最新动态 -->
 		<div class="container w-85 px-0" id="news">
-			<!-- 头部栅格布局 -->
+<!-- 头部栅格布局 -->
 			<div class="row mx-0">
 				<!-- 头部左边 -->
 				<div class="col-lg-8  px-0 ">
@@ -192,21 +544,28 @@
 		</div>
 		<br>
 		<br>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<h1 class="text-center">内容(未完成)</h1>
+		<hr>
+		<hr>
+		<hr>
 
-
-		<!-- 尾部栅格 -->
-		<div class="container zxcard px-0" id="new-card">
+<!-- 尾部栅格 -->
+		<div class="container px-0" id="new-card">
 		<div class="row mx-0">
 			<!-- 左边 -->
 			<div class="col-lg-4 col-md-6 col-sm-12 px-0  mt-lg-5">
 				<!-- 左1 -->
-				<div class="card mx-0 mr-md-2 mb-sm-2 mb-lg-3 bg-gray">
+				<div class="card mx-0 mr-md-2 mb-sm-2 mb-lg-3 bg-gray" id="left1">
 					<img src="img/card/play-pokemon-169.jpg" class="w-100">
 					<h4>在PlayPokemon上关注神奇宝贝游戏报道</h4>
 					<span>在新的Play上获取最新的策略提示,活动新闻等!神奇宝贝Twitter账户.</span>
 				</div>
 				<!-- 左2 -->
-				<div class="card mx-0 mr-md-2 mb-sm-2 bg-lightblue">
+				<div class="card mx-0 mr-md-2 mb-sm-2 bg-lightblue" id="left2">
 					<img src="img/card/tcg-porygon-z-gx-box-169-en.jpg" class="w-100">
 					<h4>战斗吧!3D龙Z</h4>
 					<span>凭借神奇宝贝Poryg(3D龙),您可以获得胜利.</span>
@@ -215,7 +574,7 @@
 			<!-- 中 -->
 			<div class="col-lg-4 col-md-6 col-sm-12 px-0">
 				<!-- 中1 -->
-				<div class="card mx-0 ml-md-1 mr-md-1 mb-sm-2 mb-lg-3 bg-yellow">
+				<div class="card mx-0 ml-md-1 mr-md-0 mb-sm-2 mb-lg-3 bg-yellow" id="mid1">
 					<img src="img/card/detective-pikachu-home-video-169-en.jpg" class="w-100">
 					<h4>将侦探皮卡丘带回家</h4>
 					<span>现在你可以购买蓝光光碟<口袋妖怪皮卡丘>,而且有一张特殊的TCG卡</span>
@@ -225,7 +584,7 @@
 					<h1 class="new">新动态</h1>
 				</div>
 				<!-- 中2 -->
-				<div class="card mx-0 ml-md-1 mr-md-1 mb-sm-2 bg-darkgray">
+				<div class="card mx-0 ml-md-1 mr-md-0 mb-sm-2 bg-darkgray" id="mid2">
 					<img src="img/card/pokemon-go-team-rocket-169.jpg" class="w-100">
 					<h4>Pokemon Go出现黑化神奇宝贝</h4>
 					<span>在PokeStops中挑战火箭队利用装置控制的黑化神奇宝贝,并净化它们,将其放入到自己的队伍里!</span>
@@ -236,15 +595,15 @@
 				<div class="row mx-0 flex-row">
 					<!-- 右1 -->
 					<div class="col-lg-12 col-md-6 col-sm-12 px-0">
-						<div class="card px-0 mx-0 mr-lg-0 ml-lg-2 mb-sm-2 mb-lg-3 mr-375 bg-darkblue">
+						<div class="card px-0 mx-0 mr-lg-0 ml-lg-2 mb-sm-2 mb-lg-3 mr-375 bg-darkblue" id="right1">
 							<img src="img/card/pokemon-duel-169.jpg" class="w-100">
 							<h4>Pokemon Duel服务器的关闭</h4>
 							<span>宝可梦战斗手游的服务将于2019年10月31日结束,非常感谢一直以来对我们的大力支持.</span>
 						</div>
 					</div>
 					<!-- 右2 -->
-					<div class="col-lg-12 col-md-6 col-sm-12 px-0 ">
-						<div class="card px-0 mx-0 ml-lg-2 ml-lg-0 mb-sm-2 mb-lg-3 ml-375 bg-redorange">
+					<div class="col-lg-12 col-md-6 col-sm-12 px-0">
+						<div class="card px-0 mx-0 ml-lg-2 ml-lg-0 mb-sm-2 mb-lg-3 ml-375 bg-redorange" id="right2">
 							<img src="img/card/pokemon-rumble-rush-169.jpg" class="w-100">
 							<h4>"进击吧,宝可梦"将登陆手机版</h4>
 							<span>旅行到未知的岛屿,战斗野生宠物小精灵,并在这个热闹而又刺激的远征中发现宝贵的东西.</span>
@@ -253,8 +612,48 @@
 				</div>
 			</div>
 		</div>
-
-
 	</div>
+<!--主页页脚-->
+	<footer class="mt-sm-5">
+			<div class="container px-0">
+				<div class="row mx-0">
+					<div class="col-lg-4 col-sm-6 px-0 mt-sm-4">
+						<ul class="list-unstyled">
+							<img src="img/background/pokemon_company.png" alt="">
+							<li><a href="">What's New/新鲜事</a></li>
+							<li><a href="">Pokémon Parents Guide/宝可梦指导</a></li>
+							<li><a href="">Customer Service/顾客服务</a></li>
+							<li><a href="">About Our Company/关于公司</a></li>
+							<li><a href="">Pokémon Careers/宝可梦生涯</a></li>
+							<li><a href="">Select a Country/Region/选择国家</a></li>
+						</ul>	
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-12" id="partner">
+						<div class="row mx-0 justify-content-around my-md-4 my-sm-2">
+							<p class="w-100">Connect With Us/联系我们</p>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+						</div>
+						<div class="row mx-0 justify-content-around">
+							<a href=""><img src="img/icon/SNS_tencentwedio (1)-thumb-132x132-11102.png"></a>
+							<a href=""><img src="img/icon/SNS_wechat-thumb-132x132-8010.png"></a>
+							<a href=""><img src="img/icon/SNS_weibo-thumb-132x132-8009.png"></a>
+						</div>
+					</div>	
+					<div class="col-lg-4 col-sm-12 px-0 mt-lg-4 mt-sm-3">
+						<p style="color:white">
+							<a href="">宝可梦是什么？</a>|	<a href="">使用条款 </a>|<a href=""> 网站地图</a>
+						</p>		
+						<span>©2019 Pokémon. ©1995 - 2019 Nintendo/Creatures Inc./GAME FREAK inc.</span><br />
+						<span>©1997 Nintendo, Creatures, GAME FREAK, TV Tokyo, ShoPro, JR Kikaku. ©Pokémon. TM and ® are trademarks of Nintendo.</span>
+					</div>
+				</div>
+			</div>
+		</footer>
 	</body>
 </html>
