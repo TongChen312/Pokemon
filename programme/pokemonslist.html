@@ -38,10 +38,10 @@
 				 for(var i=0;i<arr.length;i++){
 					list+=`
 						<tr>
-							<td>${arr[i].poid}</td>
+							<td><a href="pokemon.html?pid=${arr[i].pid}">${arr[i].poid}<\/a><\/td>
 							<td>${arr[i].pname}</td>
-							<td>${arr[i]. pname1}</td>
-							<td>${arr[i]. pname2}</td>
+							<td>${arr[i].pname1}</td>
+							<td>${arr[i].pname2}</td>
 							<td>${arr[i].character1}</td>
 							<td>${arr[i].character2}</td>
 							<td>${arr[i].nature}</td>
@@ -50,7 +50,7 @@
 							<td>${arr[i].height}</td>
 							<td>${arr[i].weight}</td>
 							<td>${arr[i].details}</td>
-							<img src=\"../${arr[i].p_picture}\">;
+							<img src=\"${arr[i].p_picture}\">
 						</tr>`;
 				}
 				//将列表放入div中
@@ -66,8 +66,7 @@
 	}	
   </script>
  </head>
- <body onload="">
-	<div id="pl"><img alt="" / id="zz"></div>
-	<button onclick="PokemonList()">list</button>
+ <body onload="PokemonList()">
+	<div id="pl"></div
  </body>
 </html>

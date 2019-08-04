@@ -168,6 +168,7 @@
 			margin-right:3rem;
 			border-radius:50%;
 		}
+		#poster{margin-left:4%;}
 		#poster .carousel-indicators .active{background-color:#000;}
 		.card{background:#0002}
 /* 新闻和资讯卡的样式 */
@@ -188,6 +189,7 @@
 		.bg-pink{background:#ff90c4 !important;}
 		/* 宽度85% */
 		.w-85{width:85% !important}
+		.w-92{width:92% !important}
 		@keyframes small{
 			0%{transform:scale(2);}
 			100%{transform:scale(1);}
@@ -306,7 +308,7 @@
 		/*媒体查询*/
 		@media screen and (min-width:992px){
 			footer ul a{
-				font:1.1rem Tahoma;
+				font:1.0rem Tahoma;
 			}
 			footer span~span{
 				margin-top:1.2rem;
@@ -340,6 +342,12 @@
 			footer img{
 				transform:scale(0.8)
 			}
+			ul img{
+				margin-left:50%;
+			}
+			footer ul~ul{
+				margin-top:30px;
+			}
 		}
 		.container>:nth-child(2){
 			border-left:1px solid black;
@@ -370,7 +378,13 @@
 		p{color:white;font-weight:bold}
 		footer p[style]>a{color:white}
 		footer span{color:#888}
-
+/*背景*/
+		body{
+			background:url(img/background/container_bg.png)
+		}
+		.container:not(:last-child){
+			background:white;
+		}
 	</style>
 	<body>
 <!--网页头的logo-->	
@@ -405,7 +419,7 @@
 			</div>
 		</header>
 <!--导航-->
- 	<nav class="navbar navbar-expand-md navbar-light bg-light row py-0 mt-1" id="orgTree"> 
+ 	<nav class="navbar navbar-expand-md navbar-light bg-light row py-0 mt-1 mx-0"> 
 		<a href="" class="navbar-brand col-md-auto px-0 ml-3 mr-0">
 			<img src="img/logo/logo.png" id="logo">
 		</a>
@@ -413,7 +427,7 @@
 		<button class="navbar-toggler" data-toggle="collapse" data-target="#content">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse justify-content-md-between justify-content-lg-around col-lg-10 pl-0" id="content">
+		<div class="collapse navbar-collapse justify-content-md-between justify-content-lg-around col-lg-10 pl-0 px-0" id="content">
 			<ul class="navbar-nav" style="width:100%;">
 				<li class="nav-item">
 					<a href="" class="nav-link" cartoon><span>动画</span></a>
@@ -446,9 +460,11 @@
 			</ul>
 		</div>
  	</nav> 
+				<div></div>
+			<div></div>
 		<hr>
 		<!-- 轮播图 -->
-		<div class="carousel mb-lg-5 mb-md-3 mb-sm-1" data-ride="carousel" id="poster">
+		<div class="carousel mb-lg-5 mb-md-3 mb-sm-1 w-92" data-ride="carousel" id="poster">
 			<!-- 轮播内容 -->
 			<div class="carousle-inner text-center">
 				<div class="carousel-item active">
@@ -617,16 +633,20 @@
 	<footer class="mt-sm-5">
 			<div class="container px-0">
 				<div class="row mx-0">
-					<div class="col-lg-4 col-sm-6 px-0 mt-sm-4">
-						<ul class="list-unstyled">
-							<img src="img/background/pokemon_company.png" alt="">
-							<li><a href="">What's New/新鲜事</a></li>
-							<li><a href="">Pokémon Parents Guide/宝可梦指导</a></li>
-							<li><a href="">Customer Service/顾客服务</a></li>
-							<li><a href="">About Our Company/关于公司</a></li>
-							<li><a href="">Pokémon Careers/宝可梦生涯</a></li>
-							<li><a href="">Select a Country/Region/选择国家</a></li>
-						</ul>	
+					<div class="col-lg-4 col-md-6 col-sm-12 px-0 mt-sm-4">
+						<div class="row mx-0 w-100">
+							<ul class="list-unstyled my-0 col-sm-6 col-md-12 pr-0">
+								<img src="img/background/pokemon_company.png" alt="">
+								<li><a href="">What's New/新鲜事</a></li>
+								<li><a href="">Pokémon Parents Guide/宝可梦指导</a></li>
+								<li><a href="">Customer Service/顾客服务</a></li>
+							</ul>	
+							<ul class="list-unstyled col-sm-6 col-md-12 pr-0">
+								<li><a href="">About Our Company/关于公司</a></li>
+								<li><a href="">Pokémon Careers/宝可梦生涯</a></li>
+								<li><a href="">Select a Country/Region/选择国家</a></li>
+							</ul>	
+						</div>
 					</div>
 					<div class="col-lg-4 col-md-6 col-sm-12" id="partner">
 						<div class="row mx-0 justify-content-around my-md-4 my-sm-2">
