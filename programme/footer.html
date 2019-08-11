@@ -12,7 +12,7 @@
 	<script src="js/popper.min.js"></script>	
 	<script src="js/bootstrap.min.js"></script>
 	<style>
-/*尾部样式*/
+/*footer样式*/
 		/*a标签前的三角形箭头*/
 		footer ul a:before{
 			color:#616161;
@@ -29,7 +29,7 @@
 		/*媒体查询*/
 		@media screen and (min-width:992px){
 			footer ul a{
-				font:1.1rem Tahoma;
+				font:1.0rem Tahoma;
 			}
 			footer span~span{
 				margin-top:1.2rem;
@@ -62,6 +62,12 @@
 			}	
 			footer img{
 				transform:scale(0.8)
+			}
+			ul img{
+				margin-left:50%;
+			}
+			footer ul~ul{
+				margin-top:30px;
 			}
 		}
 		.container>:nth-child(2){
@@ -97,46 +103,49 @@
 </head>
 <body>
 	<footer class="mt-sm-5">
-		<!--主页页脚-->
-		<div class="container px-0">
-			<div class="row mx-0">
-				<div class="col-lg-4 col-sm-6 px-0 mt-sm-4">
-					<ul class="list-unstyled">
-						<img src="img/background/pokemon_company.png" alt="">
-						<li><a href="">What's New/新鲜事</a></li>
-						<li><a href="">Pokémon Parents Guide/宝可梦指导</a></li>
-						<li><a href="">Customer Service/顾客服务</a></li>
-						<li><a href="">About Our Company/关于公司</a></li>
-						<li><a href="">Pokémon Careers/宝可梦生涯</a></li>
-						<li><a href="">Select a Country/Region/选择国家</a></li>
-					</ul>	
-				</div>
-				<div class="col-lg-4 col-md-6 col-sm-12" id="partner">
-					<div class="row mx-0 justify-content-around my-md-4 my-sm-2">
-						<p class="w-100">Connect With Us/联系我们</p>
-						<a href=""></a>
-						<a href=""></a>
-						<a href=""></a>
-						<a href=""></a>
-						<a href=""></a>
-						<a href=""></a>
-						<a href=""></a>
+			<div class="container px-0">
+				<div class="row mx-0">
+					<div class="col-lg-4 col-md-6 col-sm-12 px-0 mt-sm-4">
+						<div class="row mx-0 w-100">
+							<ul class="list-unstyled my-0 col-sm-6 col-md-12 pr-0">
+								<img src="img/background/pokemon_company.png" alt="">
+								<li><a href="">What's New/新鲜事</a></li>
+								<li><a href="">Pokémon Parents Guide/宝可梦指导</a></li>
+								<li><a href="">Customer Service/顾客服务</a></li>
+							</ul>	
+							<ul class="list-unstyled col-sm-6 col-md-12 pr-0">
+								<li><a href="">About Our Company/关于公司</a></li>
+								<li><a href="">Pokémon Careers/宝可梦生涯</a></li>
+								<li><a href="">Select a Country/Region/选择国家</a></li>
+							</ul>	
+						</div>
 					</div>
-					<div class="row mx-0 justify-content-around">
-						<a href=""><img src="img/icon/SNS_tencentwedio (1)-thumb-132x132-11102.png"></a>
-						<a href=""><img src="img/icon/SNS_wechat-thumb-132x132-8010.png"></a>
-						<a href=""><img src="img/icon/SNS_weibo-thumb-132x132-8009.png"></a>
+					<div class="col-lg-4 col-md-6 col-sm-12" id="partner">
+						<div class="row mx-0 justify-content-around my-md-4 my-sm-2">
+							<p class="w-100">Connect With Us/联系我们</p>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+							<a href=""></a>
+						</div>
+						<div class="row mx-0 justify-content-around">
+							<a href=""><img src="img/icon/SNS_tencentwedio (1)-thumb-132x132-11102.png"></a>
+							<a href=""><img src="img/icon/SNS_wechat-thumb-132x132-8010.png"></a>
+							<a href=""><img src="img/icon/SNS_weibo-thumb-132x132-8009.png"></a>
+						</div>
+					</div>	
+					<div class="col-lg-4 col-sm-12 px-0 mt-lg-4 mt-sm-3">
+						<p style="color:white">
+							<a href="">宝可梦是什么？</a>|	<a href="">使用条款 </a>|<a href=""> 网站地图</a>
+						</p>		
+						<span>©2019 Pokémon. ©1995 - 2019 Nintendo/Creatures Inc./GAME FREAK inc.</span><br />
+						<span>©1997 Nintendo, Creatures, GAME FREAK, TV Tokyo, ShoPro, JR Kikaku. ©Pokémon. TM and ® are trademarks of Nintendo.</span>
 					</div>
-				</div>	
-				<div class="col-lg-4 col-sm-12 px-0 mt-lg-4 mt-sm-3">
-					<p style="color:white">
-						<a href="">宝可梦是什么？</a>|	<a href="">使用条款 </a>|<a href=""> 网站地图</a>
-					</p>		
-					<span>©2019 Pokémon. ©1995 - 2019 Nintendo/Creatures Inc./GAME FREAK inc.</span><br />
-					<span>©1997 Nintendo, Creatures, GAME FREAK, TV Tokyo, ShoPro, JR Kikaku. ©Pokémon. TM and ® are trademarks of Nintendo.</span>
 				</div>
 			</div>
-		</div>
-	</footer>
+		</footer>
 </body>
 </html>

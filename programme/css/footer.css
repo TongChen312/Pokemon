@@ -1,0 +1,87 @@
+/*footer样式*/
+		/*a标签前的三角形箭头*/
+		footer ul a:before{
+			color:#616161;
+			content:"\25b6";
+		}
+		footer a:hover{
+			color:white;
+			text-decoration:none;
+		}
+		footer a{
+				color:#616161;
+				text-decoration:none;
+			}
+		/*媒体查询*/
+		@media screen and (min-width:992px){
+			footer ul a{
+				font:1.0rem Tahoma;
+			}
+			footer span~span{
+				margin-top:1.2rem;
+				display:block;
+			}
+		}
+		@media screen and (max-width:991px) and (min-width:768px){
+			footer a,footer span{
+				font:0.9rem Tahoma;
+			}
+			footer p{
+				text-align:center;
+			}
+			footer div:nth-child(3){
+				text-align:center;
+			}	
+		}
+		@media screen and (max-width:768px){
+			footer a,footer p,footer span{
+				font:bold 0.5rem Tahoma;
+			}
+			div.col-lg-4.col-sm-6.px-0.mt-sm-4{
+				margin:0 auto;
+			}
+			p.w-100{
+				text-align:center;
+			}
+			footer div:nth-child(3){
+				text-align:center;
+			}	
+			footer img{
+				transform:scale(0.8)
+			}
+			ul img{
+				margin-left:50%;
+			}
+			footer ul~ul{
+				margin-top:30px;
+			}
+		}
+		.container>:nth-child(2){
+			border-left:1px solid black;
+		}
+		footer{
+			background:#1f1f1f;
+		}
+		footer div:nth-child(2)>div:first-child a{
+			width:35px;
+			height:34px;
+			display:inline-block;
+		}
+		#partner div:first-child a{
+			background:url(../img/icon/social-icons.png);
+		}
+		/*合作伙伴精灵图*/
+		#partner div:first-child a:nth-child(2){background-position:-35px 0px;}
+		#partner div:first-child a:nth-child(3){background-position:-70px 0px;}
+		#partner div:first-child a:nth-child(4){background-position:-105px 0px;}
+		#partner div:first-child a:nth-child(5){background-position:-140px 0px;}
+		#partner div:first-child a:nth-child(6){background-position:-175px 0px;}
+		#partner div:first-child a:nth-child(7){background-position:-210px 0px;}
+		#partner div~div a:first-child img,
+		#partner div~div a:nth-child(2) img,
+		#partner div~div a:nth-child(3) img{
+			width:75px;
+		}
+		p{color:white;font-weight:bold}
+		footer p[style]>a{color:white}
+		footer span{color:#888}

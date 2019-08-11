@@ -7,67 +7,92 @@
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <title>Pokemon列表</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="js/jquery.min.js"></script>	
+	<script src="js/popper.min.js"></script>	
+	<script src="js/bootstrap.min.js"></script>
   <script type="text/javascript">
 	function PokemonList(){
 		//创建xhr对象
-		var xhr=new XMLHttpRequest();
-		//绑定监听,接收请求
-		xhr.onreadystatechange=function(){
-			if(xhr.readyState==4 && xhr.status==200){
-				var result=xhr.responseText;
-		//json解析,解析结果是对象数组
-				var arr=JSON.parse(result);
-		//将解析的结果用模板字符串的列表形式展示出来
-				var list=`	
-				<table>
-					<tr>
-						<th>宝可梦编号</th>
-						<th>宝可梦名字</th>
-						<th>宝可梦日文名字</th>
-						<th>宝可梦英文名字</th>
-						<th>属性1</th>
-						<th>属性2</th>
-					</tr>`;
-				 for(var i=0;i<arr.length;i++){
-					 if(arr[i].character2===null){
-						arr[i].character2=""
-					 }
-					list+=`
-						<tr>
-							<td><p p${i+1}></p></td>
-							<td><a href="pokemon.html?pid=${arr[i].pid}">${arr[i].poid}<\/a><\/td>
-							<td>${arr[i].pname}</td>
-							<td>${arr[i].pname1}</td>
-							<td>${arr[i].pname2}</td>
-							<td>${arr[i].character1}</td>
-							<td>${arr[i].character2}</td>
+		return new Promise(
+			function(door){
+				var imgs=[];
+				var xhr=new XMLHttpRequest();
+				//绑定监听,接收请求
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4 && xhr.status==200){
+						var result=xhr.responseText;
+				//json解析,解析结果是对象数组
+						var arr=JSON.parse(result);
+				//将解析的结果用模板字符串的列表形式展示出来
+						var list=`	
+						<table cellpadding="2" border="8">
+							<tr>
+								<th rowspan="2">图像</th>
+								<th rowspan="2">编号</th>
+								<th colspan="3">宝可梦</th>
+								<th colspan="2" rowspan="2">属性</th>
+							</tr>
+							<tr>
+								<th>中文</th>
+								<th>日文</th>
+								<th>英文</th>
+							</tr>
+							`;
+						for(var i=0;i<arr.length;i++){
+							// if(arr[i].character2===null){
+							// 	arr[i].character2="";
+							// }
+							list+=`
+								<tr>
+									<td><p p${i+1}></p></td>
+									<td><a href="pokemon.html?pid=${arr[i].pid}">${arr[i].poid}<\/a><\/td>
+									<td>${arr[i].pname}</td>
+									<td>${arr[i].pname1}</td>
+									<td>${arr[i].pname2}</td>`
 
-						</tr>`;
+								// 	<td class="Chars">${arr[i].character1}</td>
+								//  	<td class="Chars">${arr[i].character2}</td>
+								//  </tr>`;
+
+								//判断char2是否为空
+								if(arr[i].character2==null){
+									//如果数据库中值是空的,就在页面上添加一个行数为2的char1  (td)
+									list+=`
+										<td class="Chars" colspan="2">${arr[i].character1}</td>
+									</tr>`;
+								}else{	
+									//如果数据库中值不为空,就在页面上添加一个行数为1的char1和char2  (td)
+									list+=`
+										<td class="Chars">${arr[i].character1}</td>			
+										<td class="Chars">${arr[i].character2}</td>
+									</tr>`;
+									}
+									imgs.push(arr[i].p_picture)
+								
+						}
+						//将列表放入div中
+						list+=`</table>`;
+						pl.innerHTML=list;
+						// console.log(img)
+						door(imgs)
+					}
 				}
-				//将列表放入div中
-				list+=`</table>`;
-				pl.innerHTML=list;
+				
+				//打开连接,创建请求
+				xhr.open("get","/pokemon/Plist",true);
+				//发送请求
+				xhr.send(null);
 			}
-		}
-
-		//打开连接,创建请求
-		xhr.open("get","/pokemon/Plist",true);
-		//发送请求
-		xhr.send(null);
+		)
 	}	
   </script>
   <style>
- 		*{margin:0;padding:0}
-	tr{
-				width:1500px;
-		}
 		p:empty{
 			width:40px;height:40px;
 			background-image:url(img/icon/icon_180103.png);
-			margin:0;
 		}
-		/* [p1]{background-position:40px 40px;} */
-		/* [p2]{background-position:80px 40px;} */
+/*精灵图定位*/
 		[p1]{background-position:120px 40px;}	 
 		[p2]{background-position:160px 40px;}
 		[p3]{background-position:200px 40px;}
@@ -177,14 +202,173 @@
 		[p107]{background-position:1080px 120px;}
 		[p108]{background-position:1120px 120px;}
 		[p109]{background-position:1160px 120px;}
-		[p110]{background-position:1200px 120px;}
-		
-[p111]{background-position:1240px 120px;}
-[p112]{background-position:1280px 120px;}
+		[p110]{background-position:1200px 120px;}	
+		[p111]{background-position:1240px 120px;}
+		[p112]{background-position:1280px 120px;}
+		[p113]{background-position:120px 160px;}
+		[p114]{background-position:120px 200px;}
+		[p115]{background-position:120px 240px;}
+		[p116]{background-position:120px 320px;}
+		[p117]{background-position:120px 360px;}
+		[p118]{background-position:120px 400px;}
+		[p119]{background-position:120px 440px;}
+		[p120]{background-position:120px 480px;}
+		[p121]{background-position:120px 520px;}
+		[p122]{background-position:120px 560px;}
+		[p123]{background-position:120px 600px;}
+		[p124]{background-position:120px 640px;}
+		[p125]{background-position:120px 680px;}
+		[p126]{background-position:120px 720px;}
+		[p127]{background-position:120px 760px;}
+		[p128]{background-position:120px 840px;}
+		[p129]{background-position:120px 880px;}
+		[p130]{background-position:120px 920px;}
+		[p131]{background-position:120px 1000px;}
+		[p132]{background-position:120px 1040px;}
+		[p133]{background-position:120px 1080px;}
+		[p134]{background-position:120px 1120px;}
+		[p135]{background-position:120px 1160px;}
+		[p136]{background-position:120px 1200px;}
+		[p137]{background-position:120px 1240px;}
+		[p138]{background-position:120px 1280px;}	
+		[p139]{background-position:160px 160px;}
+		[p140]{background-position:200px 160px;}
+		[p141]{background-position:240px 160px;}
+		[p142]{background-position:280px 160px;}
+		[p143]{background-position:360px 160px;}
+		[p144]{background-position:400px 160px;}
+		[p145]{background-position:440px 160px;}
+		[p146]{background-position:480px 160px;}
+		[p147]{background-position:520px 160px;}
+		[p148]{background-position:560px 160px;}
+		[p149]{background-position:600px 160px;}
+		[p150]{background-position:640px 160px;}
+		[p151]{background-position:760px 160px;}
+		#list-view tr{
+			margin:0 !important;
+			padding:1px;
+			text-align:center;
+			font-size:14px !important;
+		}
+		#list-view p{margin:0;padding:0}
+
+
+	/*设置表格宽度 */
+		#pl table th:first-child,#pl table th:nth-child(2){min-width:45px;}
+		#pl table th:nth-child(4),#pl table tr:nth-child(2) th{min-width:85px;}
+		#pl table th:last-child{min-width:110px;}
+		#list-view td{background:white;}
+		#list-view table{background:#FAA;} 
+		#list-view{display:flex;justify-content:center}
+
+
+
+		.w-90{
+				width:90% !important;
+		}
+		li.col-2 img{
+				width:100%;
+				margin-top:50%;
+		}
+		ul{
+				margin-left: 5rem !important;
+		}
+		img{width:100%;}
+
   </style>
  </head>
- <body onload="PokemonList()">
-	<div id="pl"></div>
-	<img src=\"${arr[i].p_picture}\">
+ <body>	 
+	<ul class="list-unstyled row mx-0 px-0 w-90 ml-5" id="random_pic">
+			<li class="col-2"><div><img src="" alt=""></div></li>
+			<li class="col-2"><div><img src="" alt=""></div></li>
+			<li class="col-4"><div><img src="" alt=""></div></li>
+			<li class="col-2"><div><img src="" alt=""></div></li>
+			<li class="col-2"><div><img src="" alt=""></div></li> 
+	</ul>
+	<script>
+
+	</script>
+	<div id="list-view">
+		<div id="pl"></div>
+	</div>
+	<script>
+		//属性背景动态判断渲染
+		function show(){
+			//查找table元素
+			var table=document.getElementsByTagName("table")[0];
+			// console.log(table);
+			//查找table元素下的classname的集合
+			var Chars=table.getElementsByClassName("Chars");
+			// console.log(Chars);
+				//遍历Chars集合,判断每一个集合中的元素的innerHTML;根据值的不同,动态添加背景样式
+				for(var char of Chars){
+					// console.log(char.innerHTML)
+					switch(char.innerHTML){
+						case "草":char.innerHTML=="草";
+							char.style.backgroundColor="#77CC55";break;
+						case "火":char.innerHTML=="火";
+							char.style.backgroundColor="#FF4422";break;			
+						case "毒":char.innerHTML=="毒";
+							char.style.backgroundColor="#AA5599";break;
+						case "飞行":char.innerHTML=="飞行";
+							char.style.backgroundColor="#6699FF";break;			
+						case "水":char.innerHTML=="水";
+							char.style.backgroundColor="#3399FF";break;
+						case "虫":char.innerHTML=="虫";
+							char.style.backgroundColor="#AABB22";break;
+						case "一般":char.innerHTML=="一般";
+							char.style.backgroundColor="#BBBBAA";break;
+						case "电":char.innerHTML=="电";
+							char.style.backgroundColor="#FFCC33";break;
+						case "地面":char.innerHTML=="地面";
+							char.style.backgroundColor="#DDBB55";break;
+						case "妖精":char.innerHTML=="妖精";
+							char.style.backgroundColor="#FFAAFF";break;
+						case "格斗":char.innerHTML=="格斗";
+							char.style.backgroundColor="#BB5544";break;
+						case "岩石":char.innerHTML=="岩石";
+							char.style.backgroundColor="#BBAA66";break;	
+						case "超能力":char.innerHTML=="超能力";
+							char.style.backgroundColor="#FF5599";break;
+						case "冰":char.innerHTML=="冰";
+							char.style.backgroundColor="#77DDFF";break;
+						case "幽灵":char.innerHTML=="幽灵";
+							char.style.backgroundColor="#6666BB";break;
+						case "龙":char.innerHTML=="龙";
+							char.style.backgroundColor="#7766EE";break;
+						case "恶":char.innerHTML=="恶";
+							char.style.backgroundColor="#775544";break;
+						case "钢":char.innerHTML=="钢";
+							char.style.backgroundColor="#AAAABB";break;			
+					}
+				}	
+		}
+		
+
+
+		//异步函数
+		(async function(){
+			//首先 Ajax获取数据库的数据,并显示在页面,同时将PokemonList()的图片地址数组传出来,赋值给变量imgs
+			var imgs=await PokemonList()
+			//在这之后对数据中属性一栏进行背景添加(判断)
+			await show();
+
+			//获取要修改的元素的父元素ul,得出子元素li集合
+			var ul=document.getElementById("random_pic");
+			var lis=ul.getElementsByTagName("li");
+			for(var li of lis){
+				//找出给一个遍历出来的li的唯一子元素div  的唯一子元素img
+				var img=li.children[0].children[0]
+				//随机生成的一个数字,要求是图片地址数组imgs的下标
+				var random=Math.ceil(Math.random()*(imgs.length-1));3
+				console.log(random)
+				img.setAttribute("src",`${imgs[random]}`)
+				//每遍历一次将这次遍历出来的图片地址在原数组imgs上删除一次
+				//保证下一次不会选择到同一个图片地址
+				imgs.splice(random,1)
+			}
+		})()
+	</script>
+	<!-- <img src=\"${arr[i].p_picture}\"> -->
  </body>
 </html>

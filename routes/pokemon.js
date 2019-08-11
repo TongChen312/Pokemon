@@ -11,5 +11,17 @@ router.get("/Plist",(req,res)=>{
 });
 
 
-
+//单个宝可梦详细信息
+router.get("/Pquerry/:pid",(req,res)=>{
+	var $pid=req.params.pid;
+	var sql="select * from Pokemons where pid=?"
+	pool.query(sql,[$pid],(err,result)=>{
+		if(result.length>0){
+			res.send(result);
+		}else{
+			res.send("0");
+		}
+		console.log(result);
+	});
+});
 module.exports=router;
