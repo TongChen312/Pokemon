@@ -1,151 +1,45 @@
-<!doctype html>
-<html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="Generator" content="EditPlus®">
-  <meta name="Author" content="">
-  <meta name="Keywords" content="">
-  <meta name="Description" content="">
-  <title>Document</title>
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<script src="js/jquery.min.js"></script>	
-	<script src="js/popper.min.js"></script>	
-	<script src="js/bootstrap.min.js"></script>
-	<style>
-/*footer样式*/
-		/*a标签前的三角形箭头*/
-		footer ul a:before{
-			color:#616161;
-			content:"\25b6";
-		}
-		footer a:hover{
-			color:white;
-			text-decoration:none;
-		}
-		footer a{
-				color:#616161;
-				text-decoration:none;
-			}
-		/*媒体查询*/
-		@media screen and (min-width:992px){
-			footer ul a{
-				font:1.0rem Tahoma;
-			}
-			footer span~span{
-				margin-top:1.2rem;
-				display:block;
-			}
-		}
-		@media screen and (max-width:991px) and (min-width:768px){
-			footer a,footer span{
-				font:0.9rem Tahoma;
-			}
-			footer p{
-				text-align:center;
-			}
-			footer div:nth-child(3){
-				text-align:center;
-			}	
-		}
-		@media screen and (max-width:768px){
-			footer a,footer p,footer span{
-				font:bold 0.5rem Tahoma;
-			}
-			div.col-lg-4.col-sm-6.px-0.mt-sm-4{
-				margin:0 auto;
-			}
-			p.w-100{
-				text-align:center;
-			}
-			footer div:nth-child(3){
-				text-align:center;
-			}	
-			footer img{
-				transform:scale(0.8)
-			}
-			ul img{
-				margin-left:50%;
-			}
-			footer ul~ul{
-				margin-top:30px;
-			}
-		}
-		.container>:nth-child(2){
-			border-left:1px solid black;
-		}
-		footer{
-			background:#1f1f1f;
-		}
-		footer div:nth-child(2)>div:first-child a{
-			width:35px;
-			height:34px;
-			display:inline-block;
-		}
-		#partner div:first-child a{
-			background:url(img/icon/social-icons.png);
-		}
-		/*合作伙伴精灵图*/
-		#partner div:first-child a:nth-child(2){background-position:-35px 0px;}
-		#partner div:first-child a:nth-child(3){background-position:-70px 0px;}
-		#partner div:first-child a:nth-child(4){background-position:-105px 0px;}
-		#partner div:first-child a:nth-child(5){background-position:-140px 0px;}
-		#partner div:first-child a:nth-child(6){background-position:-175px 0px;}
-		#partner div:first-child a:nth-child(7){background-position:-210px 0px;}
-		#partner div~div a:first-child img,
-		#partner div~div a:nth-child(2) img,
-		#partner div~div a:nth-child(3) img{
-			width:75px;
-		}
-		p{color:white;font-weight:bold}
-		footer p[style]>a{color:white}
-		footer span{color:#888}
-	</style>
-</head>
-<body>
-	<footer class="mt-sm-5">
-			<div class="container px-0">
-				<div class="row mx-0">
-					<div class="col-lg-4 col-md-6 col-sm-12 px-0 mt-sm-4">
-						<div class="row mx-0 w-100">
-							<ul class="list-unstyled my-0 col-sm-6 col-md-12 pr-0">
-								<img src="img/background/pokemon_company.png" alt="">
-								<li><a href="">What's New/新鲜事</a></li>
-								<li><a href="">Pokémon Parents Guide/宝可梦指导</a></li>
-								<li><a href="">Customer Service/顾客服务</a></li>
-							</ul>	
-							<ul class="list-unstyled col-sm-6 col-md-12 pr-0">
-								<li><a href="">About Our Company/关于公司</a></li>
-								<li><a href="">Pokémon Careers/宝可梦生涯</a></li>
-								<li><a href="">Select a Country/Region/选择国家</a></li>
-							</ul>	
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-sm-12" id="partner">
-						<div class="row mx-0 justify-content-around my-md-4 my-sm-2">
-							<p class="w-100">Connect With Us/联系我们</p>
-							<a href=""></a>
-							<a href=""></a>
-							<a href=""></a>
-							<a href=""></a>
-							<a href=""></a>
-							<a href=""></a>
-							<a href=""></a>
-						</div>
-						<div class="row mx-0 justify-content-around">
-							<a href=""><img src="img/icon/SNS_tencentwedio (1)-thumb-132x132-11102.png"></a>
-							<a href=""><img src="img/icon/SNS_wechat-thumb-132x132-8010.png"></a>
-							<a href=""><img src="img/icon/SNS_weibo-thumb-132x132-8009.png"></a>
-						</div>
-					</div>	
-					<div class="col-lg-4 col-sm-12 px-0 mt-lg-4 mt-sm-3">
-						<p style="color:white">
-							<a href="">宝可梦是什么？</a>|	<a href="">使用条款 </a>|<a href=""> 网站地图</a>
-						</p>		
-						<span>©2019 Pokémon. ©1995 - 2019 Nintendo/Creatures Inc./GAME FREAK inc.</span><br />
-						<span>©1997 Nintendo, Creatures, GAME FREAK, TV Tokyo, ShoPro, JR Kikaku. ©Pokémon. TM and ® are trademarks of Nintendo.</span>
-					</div>
+<footer class="mt-sm-5">
+	<div class="container px-0">
+		<div class="row mx-0">
+			<div class="col-lg-4 col-md-6 col-sm-12 px-0 mt-sm-4">
+				<div class="row mx-0 w-100">
+					<ul class="list-unstyled my-0 col-sm-6 col-md-12 pr-0">
+						<img src="img/background/pokemon_company.png" alt="">
+						<li><a href="">What's New/新鲜事</a></li>
+						<li><a href="">Pokémon Parents Guide/宝可梦指导</a></li>
+						<li><a href="">Customer Service/顾客服务</a></li>
+					</ul>	
+					<ul class="list-unstyled col-sm-6 col-md-12 pr-0">
+						<li><a href="">About Our Company/关于公司</a></li>
+						<li><a href="">Pokémon Careers/宝可梦生涯</a></li>
+						<li><a href="">Select a Country/Region/选择国家</a></li>
+					</ul>	
 				</div>
 			</div>
-		</footer>
-</body>
-</html>
+			<div class="col-lg-4 col-md-6 col-sm-12" id="partner">
+				<div class="row mx-0 justify-content-around my-md-4 my-sm-2">
+					<p class="w-100 text-center">Connect With Us/联系我们</p>
+					<a href=""></a>
+					<a href=""></a>
+					<a href=""></a>
+					<a href=""></a>
+					<a href=""></a>
+					<a href=""></a>
+					<a href=""></a>
+				</div>
+				<div class="row mx-0 justify-content-around">
+					<a href=""><img src="img/icon/SNS_tencentwedio (1)-thumb-132x132-11102.png"></a>
+					<a href=""><img src="img/icon/SNS_wechat-thumb-132x132-8010.png"></a>
+					<a href=""><img src="img/icon/SNS_weibo-thumb-132x132-8009.png"></a>
+				</div>
+			</div>	
+			<div class="col-lg-4 col-sm-12 px-0 mt-lg-4 mt-sm-3">
+				<p style="color:white">
+					<a href="">宝可梦是什么？</a>|	<a href="">使用条款 </a>|<a href=""> 网站地图</a>
+				</p>		
+				<span>©2019 Pokémon. ©1995 - 2019 Nintendo/Creatures Inc./GAME FREAK inc.</span><br />
+				<span>©1997 Nintendo, Creatures, GAME FREAK, TV Tokyo, ShoPro, JR Kikaku. ©Pokémon. TM and ® are trademarks of Nintendo.</span>
+			</div>
+		</div>
+	</div>
+</footer>

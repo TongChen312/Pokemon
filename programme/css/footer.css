@@ -37,10 +37,10 @@
 			footer a,footer p,footer span{
 				font:bold 0.5rem Tahoma;
 			}
-			div.col-lg-4.col-sm-6.px-0.mt-sm-4{
+			footer div.col-lg-4.col-sm-6.px-0.mt-sm-4{
 				margin:0 auto;
 			}
-			p.w-100{
+			footer p.w-100{
 				text-align:center;
 			}
 			footer div:nth-child(3){
@@ -49,7 +49,7 @@
 			footer img{
 				transform:scale(0.8)
 			}
-			ul img{
+			footer ul img{
 				margin-left:50%;
 			}
 			footer ul~ul{
@@ -60,7 +60,7 @@
 			border-left:1px solid black;
 		}
 		footer{
-			background:#1f1f1f;
+			background:#1f1f1f !important;
 		}
 		footer div:nth-child(2)>div:first-child a{
 			width:35px;
@@ -82,6 +82,6 @@
 		#partner div~div a:nth-child(3) img{
 			width:75px;
 		}
-		p{color:white;font-weight:bold}
+		footer p{color:white;font-weight:bold}
 		footer p[style]>a{color:white}
 		footer span{color:#888}

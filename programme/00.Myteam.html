@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div{
+      width:50px;
+      height:50px;
+      font:bold  30px 华文楷体;
+      text-align: center;
+      border:2px solid red;
+      cursor: pointer;
+    }
+    div::before{
+      content:"";
+      display: table;
+      margin-bottom: 3px;
+    }
+    span{
+      color:red;
+      margin-left:30px;
+    }
+  </style>
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+<body>
+  <table>
+    <tr>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+      <td>
+        <div></div>
+      </td>
+    </tr>
+  </table>
+  <button id="first-team">第一支队伍</button>
+  <button id="second-team">第二支队伍</button>
+  <button id="third-team">第三支队伍</button>
+  <hr>
+  <h6>第一只队伍<span id="first-result"></span></h6>
+  <h6>第二只队伍<span id="second-result"></span></h6>
+  <h6>第三只队伍<span id="third-result"></span></h6>
+  <script>
+    //将div填入内容1~100 
+    var div=$("table").find("div");
+    for(var i=1;i<=div.length;i++){
+    $(div[i-1]).html(`${i}`)
+  }
+
+
+
+  //创建一个函数createMy   创建队伍、
+    function createMy(thisteam){
+      //设置一个数组(myteam),将之后的每一个成员放入
+      //因为一个人可以有很多队伍,为避免myteam被全局污染,和命名冲突,采用闭包
+      var myteam=[];  
+      var callback=function(e){
+        var elem=e.target;
+        var html=$(elem).html()
+        // console.log(html);//获取当前点击的成员编号
+        if(myteam.length<6){
+          if(myteam.indexOf(html)==-1){
+            myteam.push($(elem).html())
+          }else{
+            alert(`您的该队伍已经有这个Pokemon了,请勿重复添加`)
+          }
+        }else{
+          alert(`您的该队伍数量已经达到上限6只了`)
+        }
+        return  thisteam+`  ${myteam}` //result
+      };
+      return callback
+    }
+
+
+    //点击按钮,创建队伍,一共有三个
+    //点击第一个按钮,就可以创建第一只队伍
+    $("#first-team").on("click",function(){
+      //清除之前table的事件委托
+      $("table").off("click")
+      var first=createMy("first");//callback
+      //将点击成员的触发事件事件委托到table上
+      $("table").on("click","div",function(e){
+        //每一次点击都是调用一次createMy函数中的回调函数callback
+        //每次调用都是将该次点击的成员编号加入myteam数组中
+        result=first(e);//callback中的返回结果result
+        $("#first-result").html(result)
+      })
+      
+    })
+    
+
+    $("#second-team").on("click",function(){
+      $("table").off("click")
+      //createMy的第二个孩子callback,每个孩子只用自己的红包myteam
+      var second=createMy("second");
+      $("table").on("click","div",function(e){
+        result=second(e);
+        $("#second-result").html(result)
+      })
+    })
+ 
+    $("#third-team").on("click",function(){
+      $("table").off("click")
+      var third=createMy("third");//createMy的第三个孩子
+      $("table").on("click","div",function(e){
+        result=third(e);
+        $("#third-result").html(result)
+      })
+    })
+  </script>
+</body>
+</html>

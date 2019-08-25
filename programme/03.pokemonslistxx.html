@@ -8,6 +8,8 @@
   <meta name="Description" content="">
   <title>Pokemon列表</title>
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="shortcut icon" href="img/icon/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="css/animate.min.css">
 	<script src="js/jquery.min.js"></script>	
 	<script src="js/popper.min.js"></script>	
 	<script src="js/bootstrap.min.js"></script>
@@ -37,8 +39,7 @@
 								<th>中文</th>
 								<th>日文</th>
 								<th>英文</th>
-							</tr>
-							`;
+							</tr>`;
 						for(var i=0;i<arr.length;i++){
 							// if(arr[i].character2===null){
 							// 	arr[i].character2="";
@@ -46,7 +47,7 @@
 							list+=`
 								<tr>
 									<td><p p${i+1}></p></td>
-									<td><a href="pokemon.html?pid=${arr[i].pid}">${arr[i].poid}<\/a><\/td>
+									<td><a href="04.pokemon.html?pid=${arr[i].pid}">${arr[i].poid}<\/a><\/td>
 									<td>${arr[i].pname}</td>
 									<td>${arr[i].pname1}</td>
 									<td>${arr[i].pname2}</td>`
@@ -88,7 +89,7 @@
 	}	
   </script>
   <style>
-		p:empty{
+		tbody p:empty{
 			width:40px;height:40px;
 			background-image:url(img/icon/icon_180103.png);
 		}
@@ -263,7 +264,7 @@
 
 
 
-		.w-90{
+		tbody .w-90{
 				width:90% !important;
 		}
 		li.col-2 img{
@@ -274,16 +275,62 @@
 				margin-left: 5rem !important;
 		}
 		img{width:100%;}
-
+    #myteam span{
+      color:red;
+			display:inline-block;
+			background: rgb(96, 96, 221);
+			height:30px;
+			vertical-align: middle;
+			line-height: 30px;
+			margin-right:0.5rem;
+    }
+		#myteam button{
+			margin:5px 15px 5px 15px;
+			background:rgb(7, 175, 231);
+			font:800 1rem 黑体;	
+		}
+		#myteam{
+			position:fixed;
+			top:50px;
+		}
+		#myteam div{
+			opacity: 0.8;
+		}
+		#myteam div{
+			opacity: 0.8;
+			display: none;
+			background:yellowgreen;
+			border:2px solid blue;
+			filter: brightness(150%);
+		}
+		#myteam div.fadeInLeft{
+			animation: fadeInLeft 1.2s ease 1;
+		}
+		#myteam img{
+			width:50px;
+			cursor:pointer;
+		}
+		#myteam img:hover{
+			animation: pulse 1s ease-in-out 3;
+		}
+		#myteam a{
+			display: block;
+			text-align: center;
+			font-weight:800;
+			text-decoration: none;
+		}
+		#myteam a:hover{
+			transform: scale(1.5)
+		}
   </style>
  </head>
  <body>	 
 	<ul class="list-unstyled row mx-0 px-0 w-90 ml-5" id="random_pic">
-			<li class="col-2"><div><img src="" alt=""></div></li>
-			<li class="col-2"><div><img src="" alt=""></div></li>
-			<li class="col-4"><div><img src="" alt=""></div></li>
-			<li class="col-2"><div><img src="" alt=""></div></li>
-			<li class="col-2"><div><img src="" alt=""></div></li> 
+			<li class="col-2"><div><img src=""></div></li>
+			<li class="col-2"><div><img src=""></div></li>
+			<li class="col-4"><div><img src=""></div></li>
+			<li class="col-2"><div><img src=""></div></li>
+			<li class="col-2"><div><img src=""></div></li> 
 	</ul>
 	<script>
 
@@ -291,6 +338,89 @@
 	<div id="list-view">
 		<div id="pl"></div>
 	</div>
+	<div id="myteam">
+		<img src="img/icon/icons8-精灵球-50.png">
+		<div>
+				<button id="first-team" class="btn">第一支队伍</button><span id="first-result"></span><br>
+				<button id="second-team" class="btn">第二支队伍</button><span id="second-result"></span><br>
+				<button id="third-team" class="btn">第三支队伍</button><span id="third-result"></span><br>
+				<a href="">提交</a>
+		</div>
+	</div>
+	<script>	
+		$("#myteam").on("click","img",function(){
+			$("#myteam").children(":nth-child(2)").toggle().addClass("fadeInLeft")
+			console.log($(this).attr("src"))
+		if($(this).attr("src")=="img/icon/icons8-精灵球-50.png"){
+				$(this).attr({ src:`img/icon/icons8-神秘的宠物小精灵-50.png`})
+			}else if($(this).attr("src")=="img/icon/icons8-神秘的宠物小精灵-50.png"){
+				$(this).attr({ src:`img/icon/icons8-精灵球-50.png`})
+			}
+		})
+	</script>
+  <script>
+  //创建一个函数createMy   创建队伍、
+	function createMy(thisteam){
+      //设置一个数组(myteam),将之后的每一个成员放入
+      //因为一个人可以有很多队伍,为避免myteam被全局污染,和命名冲突,采用闭包
+      var myteam=[];  
+      var callback=function(e){
+				var that=e.target;
+				var html=$(that).html()
+				console.log(html)
+        // console.log(html);//获取当前点击的成员编号
+        if(myteam.length<6){
+          if(myteam.indexOf(html)==-1){
+            myteam.push(html)
+          }else{
+            alert(`您的该队伍已经有这个Pokemon了,请勿重复添加`)
+          }
+        }else{
+          alert(`您的该队伍数量已经达到上限6只了`)
+        }
+        return  ``+myteam //result
+      };
+      return callback
+    }
+
+
+    //点击按钮,创建队伍,一共有三个
+    //点击第一个按钮,就可以创建第一只队伍
+    $("#first-team").on("click",function(){
+      //清除之前tr的事件委托
+      $("tr").off("click")
+      var first=createMy("first");//callback
+      //将点击成员的触发事件事件委托到tr上
+      $("tr").on("click",":nth-child(3)",function(e){
+        //每一次点击都是调用一次createMy函数中的回调函数callback
+        //每次调用都是将该次点击的成员编号加入myteam数组中
+        result=first(e);//callback中的返回结果result
+        $("#first-result").html(result)
+      })
+    })
+    
+
+    $("#second-team").on("click",function(){
+      $("tr").off("click")
+      //createMy的第二个孩子callback,每个孩子只用自己的红包myteam
+      var second=createMy("second");
+      $("tr").on("click",":nth-child(3)",function(e){
+        result=second(e);
+        $("#second-result").html(result)
+      })
+    })
+ 
+    $("#third-team").on("click",function(){
+      $("tr").off("click")
+      var third=createMy("third");//createMy的第三个孩子
+			$("tr").on("click",":nth-child(3)",function(e){
+        result=third(e);
+        $("#third-result").html(result)
+      })
+		})
+		
+		$.ajax
+	</script>
 	<script>
 		//属性背景动态判断渲染
 		function show(){
