@@ -16,6 +16,7 @@ CREATE TABLE xz_user(
 /**('编号','#编号','中文','日文','英文','属性1 ','属性2 ','特性1','特性2','隐藏特性','身高m','体重kg','描述','img/Pokemon/'),**/
 CREATE TABLE Pokemons(
   pid INT PRIMARY KEY AUTO_INCREMENT,#宝可梦编号
+<<<<<<< HEAD
 	poid VARCHAR(16),					#宝可梦编号
   pname VARCHAR(16),				#宝可梦名字
   pname1 VARCHAR(16),				#宝可梦日文名字
@@ -29,11 +30,27 @@ CREATE TABLE Pokemons(
 	weight VARCHAR(16),				#体重
   details VARCHAR(256),			#描述
   p_picture VARCHAR(128)		#宝可梦图片
+=======
+	poid VARCHAR(16),             # #宝可梦编号
+  pname VARCHAR(16),					#宝可梦名字
+  pname1 VARCHAR(16),				#宝可梦日文名字
+  pname2 VARCHAR(16),				#宝可梦英文名字
+  character1 CHAR(8),							#属性1
+  character2 CHAR(8),						#属性2
+  nature VARCHAR(16),					#特性1
+  nature2 VARCHAR(16),				#特性2
+  snature VARCHAR(16),				#隐藏特性
+	height VARCHAR(16),          #身高
+	weight VARCHAR(16),         #体重
+  details VARCHAR(256),						#描述
+  p_picture VARCHAR(128)	#宝可梦图片
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 );
 
 /**宝可梦能力值**/
 CREATE TABLE Race_Value(
   pid INT PRIMARY KEY AUTO_INCREMENT,#宝可梦编号
+<<<<<<< HEAD
   HP SMAllINT,					#生命值
   WG SMAllINT,					#物攻
   WF SMAllINT,					#物防
@@ -41,12 +58,22 @@ CREATE TABLE Race_Value(
   TF SMAllINT,					#特防
   SD SMAllINT,					#速度
   SUM SMAllINT					#总和
+=======
+  HP TINYINT,					#生命值
+  WG TINYINT,				#物攻
+  WF TINYINT,					#物防
+  TG TINYINT,					#特攻
+  TF TINYINT,					#特防
+  SD TINYINT,					#速度
+  SUM TINYINT				#总和
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 );
 
 /**宝可梦招式**/
 CREATE TABLE Moves(
   mid INT PRIMARY KEY AUTO_INCREMENT,#招式
   mname VARCHAR(16),				#中文名
+<<<<<<< HEAD
   mname2 VARCHAR(32),				#日文名
   mname3 VARCHAR(32),				#英文名
   character1 VARCHAR(16),		#属性
@@ -63,14 +90,28 @@ CREATE TABLE Myteam(
 	team2 VARCHAR(50),
 	team3 VARCHAR(50)
 );
+=======
+  mname2 VARCHAR(32),			#日文名
+  mname3 VARCHAR(32),			#英文名
+  character1 VARCHAR(16),			#属性
+  classify VARCHAR(16),				#分类
+  power CHAR(16),								#威力
+  hit_rate CHAR(16),							#命中率
+  PP CHAR(16)                    #PP
+);
+
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 
 /**主页轮播图片**/
 /**静态图片**/
 
 /**-----------------------------数据导入---------------------------------**/
+<<<<<<< HEAD
 /**我的队伍**/
 INSERT INTO Myteam VALUES
 (NULL,'妙蛙种子,杰尼龟,小火龙','乘龙,快龙,迷你龙,走路草,霸王花,卡蒂狗','三地鼠,地鼠');
+=======
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 /**宝可梦基础信息**/
 INSERT INTO Pokemons VALUES  
 /**('编号','#编号','日文','英文','属性1 ','属性2 ','特性1','特性2','隐藏特性','身高m','体重kg','描述','img/Pokemon/'),**/
@@ -184,7 +225,11 @@ INSERT INTO Pokemons VALUES
 	(NULL,'#108','大舌头','ベロリンガ','Lickitung','一般',NULL,'我行我素','迟钝','无关天气','1.2m','65.5kg','大舌头就像它的名字一样，拥有一个巨大的舌头，可以运用灵活的舌头运用各种绝招例如舌头，是看起来蛮可爱的宝可梦。','img/Pokemon/108Lickitung.png'),
 	(NULL,'#109','瓦斯弹','ドガース','Koffing','毒',NULL,'漂浮',NULL,NULL,'0.6m','1.0kg','全身分布有凸起，部分凸起会散发出毒气，腹部有一个骷髅形的图案，带着邪恶的微笑。瓦斯弹可以引爆体内的瓦斯气体从而产生威力巨大的大爆炸，但是这么做会牺牲自己。','img/Pokemon/109Koffing.png'),
 	(NULL,'#110','双弹瓦斯','マタドガス','Weezing','毒',NULL,'漂浮',NULL,NULL,'1.2m','9.5kg','双弹瓦斯喜欢吃垃圾里的毒瓦斯，细菌，灰尘等。双弹瓦斯是由两个瓦斯弹组成的，中间有一个连接点连接着它们两个，全身的凸起向外界泄露着毒气，其中前面的长相更加凶恶。','img/Pokemon/110Weezing.png'),
+<<<<<<< HEAD
 	(NULL,'#111','独角犀牛','サイホーン','Rhyhorn','地面','岩石','避雷针','坚硬脑袋','舍身','1.0m','115.0kg','独角犀牛是一种四足兽形宝可梦，全身为灰色。全身覆盖着刀枪不入的灰色铠甲，用于保护自身和攻击敌人，背部的一块铠甲带有弧形的缺口。头部有一个小小的角，四肢较短，有一个很小的尾巴。','img/Pokemon/111Rhyhorn.png'),
+=======
+	(NULL,'#111','独角犀牛','サイホーン','Rhyhorn','地面','岩石','避雷针','坚硬脑袋','舍身','1.0m','115.0kg','独角犀牛是一种四足兽形宝可梦，全身为灰色。全身覆盖着刀枪不入的灰色铠甲，用于保护自身和攻击敌人，背部的一块铠甲带有弧形的缺口。头部有一个小小的角，四肢较短，有一个很小的尾巴。','img/Pokemon/110Weezing.png'),
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 	(NULL,'#112','钻角犀兽','サイドン','Rhydon','地面','岩石','避雷针','坚硬脑袋','舍身','1.9m','120.0kg','外形有点像恐龙，全身呈灰色，额头上有一个很尖锐的钻锥，轻轻地转动就能粉碎钻石，尾巴一挥就能毁掉大楼，是力量强大的宝可梦','img/Pokemon/112Rhydon.png'),
 	(NULL,'#113','吉利蛋','ラッキー','Chansey','一般',NULL,'自然回复','天恩','治愈之心','1.1m','34.6kg','据说收服到吉利蛋的人可以获得它最宝贵的友谊，并会变得非常好运。作为非常的一种善良的宝可梦，吉利蛋会把蛋分给它发现的受伤的宝可梦。','img/Pokemon/113Chansey.png'),
 	(NULL,'#114','蔓藤怪','モンジャラ','Tangela','草',NULL,'叶绿素','叶子防守','再生力','1.0m','35.0kg','蔓藤怪的藤蔓一直不停生长，如果失去了或被伤到了也能很快长出新的。任何靠近蔓藤怪的移动之物都会被它的藤蔓缠住，但这似乎是一种防御的手段，','img/Pokemon/114Tangela.png'),
@@ -227,6 +272,7 @@ INSERT INTO Pokemons VALUES
 	(NULL,'#151','梦幻','ミュウ','Mew','超能力',NULL,'同步',NULL,NULL,'0.4m','4.0kg','梦幻没有固定的栖息地。终日都在世界各地游走，但一般人们都是见不到它的。梦幻富有智慧、好奇心、童心和无私奉献的精神。同时梦幻具有难以置信的适应力，能够在水中自由穿梭，在空中任意翱翔。','img/Pokemon/151Mew.png');
 
 
+<<<<<<< HEAD
 /**宝可梦能力值**/
 INSERT INTO Race_Value VALUES
 /**#生命值 #物攻 #物防 #特攻 #特防 #速度 #总和**/
@@ -386,6 +432,11 @@ INSERT INTO Race_Value VALUES
 
 /**宝可梦招式**/
 INSERT INTO Moves VALUES                                                        
+=======
+
+/**宝可梦招式**/
+INSERT INTO Moves VALUES                                                           
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 /**(编号,"中文名","日文名","英文名","属性","分类",威力,命中,ＰＰ,)**/
 	(1,'拍击','はたく','Pound','一般','物理','40','100',35),
 	(2,'空手劈','からてチョップ','Karate Chop','格斗','物理','50','100',25),

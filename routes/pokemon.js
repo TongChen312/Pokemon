@@ -11,6 +11,7 @@ router.get("/Plist",(req,res)=>{
 });
 
 
+<<<<<<< HEAD
 //宝可梦列表
 router.post("/Plistmore",(req,res)=>{
 	var pno = req.body.pno;
@@ -27,17 +28,23 @@ router.post("/Plistmore",(req,res)=>{
 	});
 });
 
+=======
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 //单个宝可梦详细信息
 router.get("/Pquerry/:pid",(req,res)=>{
 	var $pid=req.params.pid;
 	var sql="select * from Pokemons where pid=?"
 	pool.query(sql,[$pid],(err,result)=>{
+<<<<<<< HEAD
 		if(err)throw err;
+=======
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 		if(result.length>0){
 			res.send(result);
 		}else{
 			res.send("0");
 		}
+<<<<<<< HEAD
 	});
 });
 
@@ -116,4 +123,9 @@ router.get("/prevnext/:pid",(req,res)=>{
 
 
 
+=======
+		console.log(result);
+	});
+});
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 module.exports=router;

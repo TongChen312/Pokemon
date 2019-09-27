@@ -56,7 +56,11 @@
 				margin-top:30px;
 			}
 		}
+<<<<<<< HEAD
 		footer .container>:nth-child(2){
+=======
+		.container>:nth-child(2){
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 			border-left:1px solid black;
 		}
 		footer{

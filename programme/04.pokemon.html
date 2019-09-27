@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<<<<<<< HEAD
 
 <head>
 	<meta charset="UTF-8">
@@ -572,4 +573,206 @@
 	<footer id="footer"></footer>
 </body>
 
+=======
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="js/jquery.min.js"></script>	
+	<script src="js/popper.min.js"></script>	
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+	function PokemonQuerry(){
+		var urlParams=new URLSearchParams(location.search);
+		var $pid=urlParams.get("pid");
+		pid.value=$pid;
+		var xhr=new XMLHttpRequest();
+		 xhr.onreadystatechange=function(){
+			if(xhr.readyState===4 && xhr.status===200){
+				var result=xhr.responseText;
+				console.log(result)
+				// console.log(JSON.parse(result));
+				// console.log(JSON.parse(result)[0]);
+				var pokemon=JSON.parse(result)[0];
+				// console.log(pokemon);
+					poid.innerHTML=pokemon.poid;
+					pname.innerHTML=pokemon.pname;
+					pname1.innerHTML=pokemon.pname1;
+					pname2.innerHTML=pokemon.pname2;
+					character1.innerHTML=pokemon.character1;
+					character2.innerHTML=pokemon.character2;
+					nature.innerHTML=pokemon.nature;
+					nature2.innerHTML=pokemon.nature2;
+					snature.innerHTML=pokemon.snature;
+					height.innerHTML=pokemon.height;
+					weight.innerHTML=pokemon.weight;
+					details.innerHTML=pokemon.details;
+					p_picture.src=pokemon.p_picture;
+			}
+		}
+		xhr.open("get","/pokemon/Pquerry/"+$pid,true);
+		xhr.send();
+	}
+
+	function zz(){
+		var hp1=105;
+		var wg1=20;
+		var wf1=15;
+		var tg1=35;
+		var tf1=55;
+		var sd1=50;
+		var wg1=15;
+		var xx=`<div style=\"width:${hp1}px;height:25px;background-color:red\">${hp1}</div>`;		ww.innerHTML=xx;
+	}
+	</script>
+	<style>
+	/* 背景旋转 */
+		@keyframes aa{
+			0%{transform:rotate(0deg);}
+			25%{transform:rotate(90deg);}
+			50%{transform:rotate(180deg);}
+			75%{transform:rotate(270deg);}
+			100%{transform:rotate(360deg);}
+		}
+		#p_picture{position:absolute;left:26%;top:24%;z-index:50;width:50%}
+		#p2{position:absolute;left:17%;top:14%;z-index:30;width:calc(100%*2/3)}
+		#p3{animation:aa 3s linear  infinite;width:100%}
+		.container.w-50{position:relative;}
+
+	/* 颜色 */
+		.gress{border-color:#b4f000;background:#92bf19;}
+		.fire{border-color:#ff6900;background:#ff3700;}
+		.ice{border-color:#14f5ff;background:#00b7ee;}
+		.Psychic{border-color:#f08cdc;background:#dc78c8;}/*超能力*/
+		.ice{border-color:#78dcff;background:#79bcd7;}
+		.poison{border-color:#d28cd2;background:#be78be;}/*毒*/
+		.water{border-color:#14b9ff;background:#0094e5;}
+		.ground{border-color:#fac85a;background:#cca142;}
+		.rock{border-color:#b48c64;background:#b48c64;}/*岩石*/
+		.dragon{border-color:#5078dc;background:#3c64c8;}/*龙*/
+		.electric{border-color:#ffe100;background:#e4b700;}
+		.bug{border-color:#46c846;background:#32b432;}
+		.normal{border-color:#dcdcdc;background:#a0a0a0;}
+		.dark{border-color:#dcdcdc;background:#a0a0a0;}/*恶*/
+		.normal{border-color:#dcdcdc;background:#a0a0a0;}
+		.steel{border-color:#aac8f0;background:#96b4dc;}/*钢*/
+		.fairy{border-color:#ffafdc;background:#ff7eb8;}/*妖精*/
+		.normal{border-color:#dcdcdc;background:#a0a0a0;}
+
+	/* 大背景 */
+		.fighting{border-color:#dc6900;background:#c85500;}
+		section{
+			background:url(img/background/timg.jpg)  no-repeat;
+			background-size:100%;
+			text-align: center;
+		}
+		.data{
+			background-image:linear-gradient(10deg, #191a59  25%,#2c2c90 50%,#41a3ff 75%,#5a17b4 100%);
+		}
+
+	/* 字体 */
+		#poid{
+			color:#b3eafe;
+			font:1.6rem "Noto Sans",Arial,sans-serif;
+		}
+		#pname{
+			color:white;
+			font:bold 2rem 楷体;
+			text-shadow:0 0 3px rgb(88, 59, 218), 2px 2px 7px #9be1ff, -2px -2px 7px #9be1ff;
+			z-index: 55;
+		}	
+		#data table,span{font:1.4rem 华文楷体;color:white}
+		#data ul li,ul p{font:1.4rem 楷体;color:white;margin-top:0.2rem}
+		p{margin:0 !important}
+		#data th{border-top:0px !important}
+		#single a{
+			margin-top:60%;
+			max-width:100px;
+			max-height:100px;
+			border-radius:50%;
+		}
+
+		#single a:hover{
+			background:#00d2ff;
+			background-size:80%;
+			opacity: 0.4;
+		}
+		/* 表,列细节 */
+		#data ul{text-align:left;}
+		#data ul li>div{text-align:right}
+		#data span:empty:after{content:"无";}
+		#details:before{content:"简述："}
+	</style>
+</head>
+<body onload="zz();PokemonQuerry()">
+<section>
+	<div class="container" id="single">
+		<div class="row mx-0">
+			<div class="col-12">
+				<p id="poid" class="mt-3"></p>
+				<p id="pname"></p>
+			</div>
+			<div class="col-3 text-center">
+				<a href="" class="d-inline-block"><img src="img/icon/arrow_left_btn.png"></a>  
+			</div>
+			<div class="w-100 col-6 ">
+				<img src="" id="p_picture" class="">
+				<img src="img/background/pokemon_circle_bg.png" id="p2">
+				<img src="img/background/pokemon_bg.png" id="p3">
+			</div>
+			<div class="col-3">
+				<a href="" class="d-inline-block"><img src="img/icon/arrow_right_btn.png"></a> 
+			</div>
+		</div>
+	</div>
+	<div class="data row" id="data">
+		<table class="table border-0 col-lg-7 col-sm-12 mt-3">
+			<tr>
+				<th colspan=3>宝可梦日文名字：&nbsp&nbsp<span id="pname1"></span></th>
+				<th colspan=3>宝可梦英文名字：&nbsp&nbsp<span id="pname2"></span></th>	
+			</tr>
+			<tr>
+				<th colspan=3 class="green">属性1：&nbsp&nbsp<span id="character1"></span></th>
+				<th colspan=3>属性2：&nbsp&nbsp<span id="character2"></span></th>
+			</tr>
+			<tr>
+				<th colspan=2>特性1：&nbsp&nbsp<span id="nature"></span></th>
+				<th colspan=2>特性2：&nbsp&nbsp<span id="nature2"></span></th>
+				<th colspan=2>隐藏特性：&nbsp&nbsp<span id="snature"></span></th>
+			</tr>
+			<tr>
+				<th colspan=3>身高：&nbsp&nbsp<span id="height"></span></th>
+				<th colspan=3>体重：&nbsp&nbsp<span id="weight"></span></th>
+			</tr>
+		</table>
+		<div class="col-lg-5 col-sm-12" id="nengli">
+			<ul class="list-unstyled list-group ">
+				<p class="text-center">能力值</p>
+				<li class="py-0">HP<div id="ww" class="d-inline-block"></div> </li>
+				<li class="py-0">物攻</li><div id="wg"></div>
+				<li class="py-0">物防</li><div id="wf"></div>
+				<li class="py-0">特攻</li><div id="tg"></div>
+				<li class="py-0">特防</li><div id="tf"></div>
+				<li class="py-0">速度</li><div id="sd"></div>
+				<li class="py-0">综合</li><div id="zh"></div>
+			</ul>
+		</div>	
+		<div class="col-sm-12">
+			<img src="img/icon/icons8-精灵球-50.png" alt="">
+			<span id="details"></span></div>
+	</div>
+
+</section>
+
+
+
+
+
+
+
+
+编号<input type="text" id="pid"> 
+</body>
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 </html>

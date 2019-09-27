@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="shortcut icon" href="img/icon/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" href="css/animate.min.css">
+<<<<<<< HEAD
 	<link rel="stylesheet" href="css/pokemon.css">
 	<script src="js/jquery.min.js"></script>	
 	<script src="js/popper.min.js"></script>	
@@ -29,6 +30,323 @@
  <!-- 禁止 -->
  <body>	 
 	 <header id="header"></header>
+=======
+	<script src="js/jquery.min.js"></script>	
+	<script src="js/popper.min.js"></script>	
+	<script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+	function PokemonList(){
+		//创建xhr对象
+		return new Promise(
+			function(door){
+				var imgs=[];
+				var xhr=new XMLHttpRequest();
+				//绑定监听,接收请求
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4 && xhr.status==200){
+						var result=xhr.responseText;
+				//json解析,解析结果是对象数组
+						var arr=JSON.parse(result);
+				//将解析的结果用模板字符串的列表形式展示出来
+						var list=`	
+						<table cellpadding="2" border="8">
+							<tr>
+								<th rowspan="2">图像</th>
+								<th rowspan="2">编号</th>
+								<th colspan="3">宝可梦</th>
+								<th colspan="2" rowspan="2">属性</th>
+							</tr>
+							<tr>
+								<th>中文</th>
+								<th>日文</th>
+								<th>英文</th>
+							</tr>`;
+						for(var i=0;i<arr.length;i++){
+							// if(arr[i].character2===null){
+							// 	arr[i].character2="";
+							// }
+							list+=`
+								<tr>
+									<td><p p${i+1}></p></td>
+									<td><a href="04.pokemon.html?pid=${arr[i].pid}">${arr[i].poid}<\/a><\/td>
+									<td>${arr[i].pname}</td>
+									<td>${arr[i].pname1}</td>
+									<td>${arr[i].pname2}</td>`
+
+								// 	<td class="Chars">${arr[i].character1}</td>
+								//  	<td class="Chars">${arr[i].character2}</td>
+								//  </tr>`;
+
+								//判断char2是否为空
+								if(arr[i].character2==null){
+									//如果数据库中值是空的,就在页面上添加一个行数为2的char1  (td)
+									list+=`
+										<td class="Chars" colspan="2">${arr[i].character1}</td>
+									</tr>`;
+								}else{	
+									//如果数据库中值不为空,就在页面上添加一个行数为1的char1和char2  (td)
+									list+=`
+										<td class="Chars">${arr[i].character1}</td>			
+										<td class="Chars">${arr[i].character2}</td>
+									</tr>`;
+									}
+									imgs.push(arr[i].p_picture)
+								
+						}
+						//将列表放入div中
+						list+=`</table>`;
+						pl.innerHTML=list;
+						// console.log(img)
+						door(imgs)
+					}
+				}
+				
+				//打开连接,创建请求
+				xhr.open("get","/pokemon/Plist",true);
+				//发送请求
+				xhr.send(null);
+			}
+		)
+	}	
+  </script>
+  <style>
+		tbody p:empty{
+			width:40px;height:40px;
+			background-image:url(img/icon/icon_180103.png);
+		}
+/*精灵图定位*/
+		[p1]{background-position:120px 40px;}	 
+		[p2]{background-position:160px 40px;}
+		[p3]{background-position:200px 40px;}
+		[p4]{background-position:280px 40px;}
+		[p5]{background-position:320px 40px;}
+		[p6]{background-position:360px 40px;}
+		[p7]{background-position:480px 40px;}
+		[p8]{background-position:520px 40px;}
+		[p9]{background-position:560px 40px;}
+		[p10]{background-position:640px 40px;}
+		[p11]{background-position:680px 40px;}
+		[p12]{background-position:720px 40px;}
+		[p13]{background-position:760px 40px;}
+		[p14]{background-position:800px 40px;}
+		[p15]{background-position:840px 40px;}
+		[p16]{background-position:920px 40px;}
+		[p17]{background-position:960px 40px;}
+		[p18]{background-position:1000px 40px;}
+		[p19]{background-position:1080px 40px;}
+		[p20]{background-position:1160px 40px;}
+		[p21]{background-position:1240px 40px;}
+		[p22]{background-position:1280px 40px;}
+		[p23]{background-position:40px 80px;}
+		[p24]{background-position:40px 120px;}
+		[p25]{background-position:40px 160px;}
+		[p26]{background-position:40px 720px;}
+		[p27]{background-position:40px 800px;}
+		[p28]{background-position:40px 880px;}
+		[p29]{background-position:40px 960px;}
+		[p30]{background-position:40px 1000px;}
+		[p31]{background-position:40px 1040px;}
+		[p32]{background-position:40px 1080px;}
+		[p33]{background-position:40px 1120px;}
+		[p34]{background-position:40px 1160px;}
+		[p35]{background-position:40px 1200px;}
+		[p36]{background-position:40px 1240px;}
+		[p37]{background-position:40px 1280px;}
+		[p38]{background-position:120px 80px;}	
+		[p39]{background-position:200px 80px;}
+		[p40]{background-position:240px 80px;}
+		[p41]{background-position:280px 80px;}
+		[p42]{background-position:320px 80px;}
+		[p43]{background-position:360px 80px;}
+		[p44]{background-position:400px 80px;}
+		[p45]{background-position:440px 80px;}
+		[p46]{background-position:480px 80px;}
+		[p47]{background-position:520px 80px;}
+		[p48]{background-position:560px 80px;}
+		[p49]{background-position:600px 80px;}
+		[p50]{background-position:640px 80px;}
+		[p51]{background-position:720px 80px;}
+		[p52]{background-position:800px 80px;}
+		[p53]{background-position:880px 80px;}
+		[p54]{background-position:960px 80px;}
+		[p55]{background-position:1000px 80px;}
+		[p56]{background-position:1040px 80px;}
+		[p57]{background-position:1080px 80px;}
+		[p58]{background-position:1120px 80px;}	
+		[p59]{background-position:1160px 80px;}
+		[p60]{background-position:1200px 80px;}
+		[p61]{background-position:1240px 80px;}
+		[p62]{background-position:1280px 80px;}
+		[p63]{background-position:80px 120px;}
+		[p64]{background-position:80px 160px;}
+		[p65]{background-position:80px 200px;}
+		[p66]{background-position:80px 280px;}
+		[p67]{background-position:80px 320px;}
+		[p68]{background-position:80px 360px;}
+		[p69]{background-position:80px 400px;}
+		[p70]{background-position:80px 440px;}
+		[p71]{background-position:80px 480px;}
+		[p72]{background-position:80px 520px;}
+		[p73]{background-position:80px 560px;}
+		[p74]{background-position:80px 600px;}
+		[p75]{background-position:80px 680px;}
+		[p76]{background-position:80px 760px;}
+		[p77]{background-position:80px 840px;}
+		[p78]{background-position:80px 880px;}
+		[p79]{background-position:80px 920px;}
+		[p80]{background-position:80px 960px;}
+		[p81]{background-position:80px 1040px;}
+		[p82]{background-position:80px 1080px;}
+		[p83]{background-position:80px 1120px;}
+		[p84]{background-position:80px 1160px;}
+		[p85]{background-position:80px 1200px;}
+		[p86]{background-position:80px 1240px;}
+		[p87]{background-position:560px 1240px;}
+		[p88]{background-position:120px 120px;}
+		[p89]{background-position:200px 120px;}
+		[p90]{background-position:280px 120px;}
+		[p91]{background-position:320px 120px;}
+		[p92]{background-position:360px 120px;}
+		[p93]{background-position:400px 120px;}
+		[p94]{background-position:440px 120px;}
+		[p95]{background-position:520px 120px;}
+		[p96]{background-position:560px 120px;}
+		[p97]{background-position:600px 120px;}
+		[p98]{background-position:640px 120px;}
+		[p99]{background-position:680px 120px;}
+		[p100]{background-position:720px 120px;}
+		[p101]{background-position:760px 120px;}
+		[p102]{background-position:800px 120px;}
+		[p103]{background-position:840px 120px;}
+		[p104]{background-position:920px 120px;}
+		[p105]{background-position:960px 120px;}
+		[p106]{background-position:1040px 120px;}
+		[p107]{background-position:1080px 120px;}
+		[p108]{background-position:1120px 120px;}
+		[p109]{background-position:1160px 120px;}
+		[p110]{background-position:1200px 120px;}	
+		[p111]{background-position:1240px 120px;}
+		[p112]{background-position:1280px 120px;}
+		[p113]{background-position:120px 160px;}
+		[p114]{background-position:120px 200px;}
+		[p115]{background-position:120px 240px;}
+		[p116]{background-position:120px 320px;}
+		[p117]{background-position:120px 360px;}
+		[p118]{background-position:120px 400px;}
+		[p119]{background-position:120px 440px;}
+		[p120]{background-position:120px 480px;}
+		[p121]{background-position:120px 520px;}
+		[p122]{background-position:120px 560px;}
+		[p123]{background-position:120px 600px;}
+		[p124]{background-position:120px 640px;}
+		[p125]{background-position:120px 680px;}
+		[p126]{background-position:120px 720px;}
+		[p127]{background-position:120px 760px;}
+		[p128]{background-position:120px 840px;}
+		[p129]{background-position:120px 880px;}
+		[p130]{background-position:120px 920px;}
+		[p131]{background-position:120px 1000px;}
+		[p132]{background-position:120px 1040px;}
+		[p133]{background-position:120px 1080px;}
+		[p134]{background-position:120px 1120px;}
+		[p135]{background-position:120px 1160px;}
+		[p136]{background-position:120px 1200px;}
+		[p137]{background-position:120px 1240px;}
+		[p138]{background-position:120px 1280px;}	
+		[p139]{background-position:160px 160px;}
+		[p140]{background-position:200px 160px;}
+		[p141]{background-position:240px 160px;}
+		[p142]{background-position:280px 160px;}
+		[p143]{background-position:360px 160px;}
+		[p144]{background-position:400px 160px;}
+		[p145]{background-position:440px 160px;}
+		[p146]{background-position:480px 160px;}
+		[p147]{background-position:520px 160px;}
+		[p148]{background-position:560px 160px;}
+		[p149]{background-position:600px 160px;}
+		[p150]{background-position:640px 160px;}
+		[p151]{background-position:760px 160px;}
+		#list-view tr{
+			margin:0 !important;
+			padding:1px;
+			text-align:center;
+			font-size:14px !important;
+		}
+		#list-view p{margin:0;padding:0}
+
+
+	/*设置表格宽度 */
+		#pl table th:first-child,#pl table th:nth-child(2){min-width:45px;}
+		#pl table th:nth-child(4),#pl table tr:nth-child(2) th{min-width:85px;}
+		#pl table th:last-child{min-width:110px;}
+		#list-view td{background:white;}
+		#list-view table{background:#FAA;} 
+		#list-view{display:flex;justify-content:center}
+
+
+
+		tbody .w-90{
+				width:90% !important;
+		}
+		li.col-2 img{
+				width:100%;
+				margin-top:50%;
+		}
+		ul{
+				margin-left: 5rem !important;
+		}
+		img{width:100%;}
+    #myteam span{
+      color:red;
+			display:inline-block;
+			background: rgb(96, 96, 221);
+			height:30px;
+			vertical-align: middle;
+			line-height: 30px;
+			margin-right:0.5rem;
+    }
+		#myteam button{
+			margin:5px 15px 5px 15px;
+			background:rgb(7, 175, 231);
+			font:800 1rem 黑体;	
+		}
+		#myteam{
+			position:fixed;
+			top:50px;
+		}
+		#myteam div{
+			opacity: 0.8;
+		}
+		#myteam div{
+			opacity: 0.8;
+			display: none;
+			background:yellowgreen;
+			border:2px solid blue;
+			filter: brightness(150%);
+		}
+		#myteam div.fadeInLeft{
+			animation: fadeInLeft 1.2s ease 1;
+		}
+		#myteam img{
+			width:50px;
+			cursor:pointer;
+		}
+		#myteam img:hover{
+			animation: pulse 1s ease-in-out 3;
+		}
+		#myteam a{
+			display: block;
+			text-align: center;
+			font-weight:800;
+			text-decoration: none;
+		}
+		#myteam a:hover{
+			transform: scale(1.5)
+		}
+  </style>
+ </head>
+ <body>	 
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 	<ul class="list-unstyled row mx-0 px-0 w-90 ml-5" id="random_pic">
 			<li class="col-2"><div><img src=""></div></li>
 			<li class="col-2"><div><img src=""></div></li>
@@ -36,6 +354,7 @@
 			<li class="col-2"><div><img src=""></div></li>
 			<li class="col-2"><div><img src=""></div></li> 
 	</ul>
+<<<<<<< HEAD
 	<div id="list-view">
 		<div id="pl"></div><br>
 	</div>
@@ -46,10 +365,21 @@
 	</div>
 	<div id="myteam">
 		<img src="img/icon/icons8-精灵球-50.png" id="ball"  draggable="false" >
+=======
+	<script>
+
+	</script>
+	<div id="list-view">
+		<div id="pl"></div>
+	</div>
+	<div id="myteam">
+		<img src="img/icon/icons8-精灵球-50.png">
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 		<div>
 				<button id="first-team" class="btn">第一支队伍</button><span id="first-result"></span><br>
 				<button id="second-team" class="btn">第二支队伍</button><span id="second-result"></span><br>
 				<button id="third-team" class="btn">第三支队伍</button><span id="third-result"></span><br>
+<<<<<<< HEAD
 				<a href="javascript:;" id="upto">提交</a>
 		</div>
 	</div>
@@ -64,6 +394,163 @@
 	// 	 $("#myteam").draggable(); 
 	// 	} );
 </script> 
+=======
+				<a href="">提交</a>
+		</div>
+	</div>
+	<script>	
+		$("#myteam").on("click","img",function(){
+			$("#myteam").children(":nth-child(2)").toggle().addClass("fadeInLeft")
+			console.log($(this).attr("src"))
+		if($(this).attr("src")=="img/icon/icons8-精灵球-50.png"){
+				$(this).attr({ src:`img/icon/icons8-神秘的宠物小精灵-50.png`})
+			}else if($(this).attr("src")=="img/icon/icons8-神秘的宠物小精灵-50.png"){
+				$(this).attr({ src:`img/icon/icons8-精灵球-50.png`})
+			}
+		})
+	</script>
+  <script>
+  //创建一个函数createMy   创建队伍、
+	function createMy(thisteam){
+      //设置一个数组(myteam),将之后的每一个成员放入
+      //因为一个人可以有很多队伍,为避免myteam被全局污染,和命名冲突,采用闭包
+      var myteam=[];  
+      var callback=function(e){
+				var that=e.target;
+				var html=$(that).html()
+				console.log(html)
+        // console.log(html);//获取当前点击的成员编号
+        if(myteam.length<6){
+          if(myteam.indexOf(html)==-1){
+            myteam.push(html)
+          }else{
+            alert(`您的该队伍已经有这个Pokemon了,请勿重复添加`)
+          }
+        }else{
+          alert(`您的该队伍数量已经达到上限6只了`)
+        }
+        return  ``+myteam //result
+      };
+      return callback
+    }
+
+
+    //点击按钮,创建队伍,一共有三个
+    //点击第一个按钮,就可以创建第一只队伍
+    $("#first-team").on("click",function(){
+      //清除之前tr的事件委托
+      $("tr").off("click")
+      var first=createMy("first");//callback
+      //将点击成员的触发事件事件委托到tr上
+      $("tr").on("click",":nth-child(3)",function(e){
+        //每一次点击都是调用一次createMy函数中的回调函数callback
+        //每次调用都是将该次点击的成员编号加入myteam数组中
+        result=first(e);//callback中的返回结果result
+        $("#first-result").html(result)
+      })
+    })
+    
+
+    $("#second-team").on("click",function(){
+      $("tr").off("click")
+      //createMy的第二个孩子callback,每个孩子只用自己的红包myteam
+      var second=createMy("second");
+      $("tr").on("click",":nth-child(3)",function(e){
+        result=second(e);
+        $("#second-result").html(result)
+      })
+    })
+ 
+    $("#third-team").on("click",function(){
+      $("tr").off("click")
+      var third=createMy("third");//createMy的第三个孩子
+			$("tr").on("click",":nth-child(3)",function(e){
+        result=third(e);
+        $("#third-result").html(result)
+      })
+		})
+		
+		$.ajax
+	</script>
+	<script>
+		//属性背景动态判断渲染
+		function show(){
+			//查找table元素
+			var table=document.getElementsByTagName("table")[0];
+			// console.log(table);
+			//查找table元素下的classname的集合
+			var Chars=table.getElementsByClassName("Chars");
+			// console.log(Chars);
+				//遍历Chars集合,判断每一个集合中的元素的innerHTML;根据值的不同,动态添加背景样式
+				for(var char of Chars){
+					// console.log(char.innerHTML)
+					switch(char.innerHTML){
+						case "草":char.innerHTML=="草";
+							char.style.backgroundColor="#77CC55";break;
+						case "火":char.innerHTML=="火";
+							char.style.backgroundColor="#FF4422";break;			
+						case "毒":char.innerHTML=="毒";
+							char.style.backgroundColor="#AA5599";break;
+						case "飞行":char.innerHTML=="飞行";
+							char.style.backgroundColor="#6699FF";break;			
+						case "水":char.innerHTML=="水";
+							char.style.backgroundColor="#3399FF";break;
+						case "虫":char.innerHTML=="虫";
+							char.style.backgroundColor="#AABB22";break;
+						case "一般":char.innerHTML=="一般";
+							char.style.backgroundColor="#BBBBAA";break;
+						case "电":char.innerHTML=="电";
+							char.style.backgroundColor="#FFCC33";break;
+						case "地面":char.innerHTML=="地面";
+							char.style.backgroundColor="#DDBB55";break;
+						case "妖精":char.innerHTML=="妖精";
+							char.style.backgroundColor="#FFAAFF";break;
+						case "格斗":char.innerHTML=="格斗";
+							char.style.backgroundColor="#BB5544";break;
+						case "岩石":char.innerHTML=="岩石";
+							char.style.backgroundColor="#BBAA66";break;	
+						case "超能力":char.innerHTML=="超能力";
+							char.style.backgroundColor="#FF5599";break;
+						case "冰":char.innerHTML=="冰";
+							char.style.backgroundColor="#77DDFF";break;
+						case "幽灵":char.innerHTML=="幽灵";
+							char.style.backgroundColor="#6666BB";break;
+						case "龙":char.innerHTML=="龙";
+							char.style.backgroundColor="#7766EE";break;
+						case "恶":char.innerHTML=="恶";
+							char.style.backgroundColor="#775544";break;
+						case "钢":char.innerHTML=="钢";
+							char.style.backgroundColor="#AAAABB";break;			
+					}
+				}	
+		}
+		
+
+
+		//异步函数
+		(async function(){
+			//首先 Ajax获取数据库的数据,并显示在页面,同时将PokemonList()的图片地址数组传出来,赋值给变量imgs
+			var imgs=await PokemonList()
+			//在这之后对数据中属性一栏进行背景添加(判断)
+			await show();
+
+			//获取要修改的元素的父元素ul,得出子元素li集合
+			var ul=document.getElementById("random_pic");
+			var lis=ul.getElementsByTagName("li");
+			for(var li of lis){
+				//找出给一个遍历出来的li的唯一子元素div  的唯一子元素img
+				var img=li.children[0].children[0]
+				//随机生成的一个数字,要求是图片地址数组imgs的下标
+				var random=Math.ceil(Math.random()*(imgs.length-1));3
+				console.log(random)
+				img.setAttribute("src",`${imgs[random]}`)
+				//每遍历一次将这次遍历出来的图片地址在原数组imgs上删除一次
+				//保证下一次不会选择到同一个图片地址
+				imgs.splice(random,1)
+			}
+		})()
+	</script>
+>>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 	<!-- <img src=\"${arr[i].p_picture}\"> -->
  </body>
 </html>
