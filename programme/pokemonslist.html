@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Pokemon列表</title>
+  <script type="text/javascript">
+	function PokemonList(){
+		//创建xhr对象
+		var xhr=new XMLHttpRequest();
+		//绑定监听,接收请求
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				var result=xhr.responseText;
+		//json解析,解析结果是对象数组
+				var arr=JSON.parse(result);
+		//将解析的结果用模板字符串的列表形式展示出来
+				var list=`	
+				<table>
+					<tr>
+						<th>宝可梦编号</th>
+						<th>宝可梦名字</th>
+						<th>宝可梦日文名字</th>
+						<th>宝可梦英文名字</th>
+						<th>属性1</th>
+						<th>属性2</th>
+						<th>特性1</th>
+						<th>特性2</th>
+						<th>隐藏特性</th>
+						<th>身高</th>
+						<th>体重</th>
+						<th>描述</th>
+						<th>宝可梦图片</th>
+					</tr>`;
+				 for(var i=0;i<arr.length;i++){
+					list+=`
+						<tr>
+							<td><a href="pokemon.html?pid=${arr[i].pid}">${arr[i].poid}<\/a><\/td>
+							<td>${arr[i].pname}</td>
+							<td>${arr[i].pname1}</td>
+							<td>${arr[i].pname2}</td>
+							<td>${arr[i].character1}</td>
+							<td>${arr[i].character2}</td>
+							<td>${arr[i].nature}</td>
+							<td>${arr[i].nature2}</td>
+							<td>${arr[i].snature}</td>
+							<td>${arr[i].height}</td>
+							<td>${arr[i].weight}</td>
+							<td>${arr[i].details}</td>
+							<img src=\"${arr[i].p_picture}\">
+						</tr>`;
+				}
+				//将列表放入div中
+				list+=`</table>`;
+				pl.innerHTML=list;
+			}
+		}
+
+		//打开连接,创建请求
+		xhr.open("get","/pokemon/Plist",true);
+		//发送请求
+		xhr.send(null);
+	}	
+  </script>
+ </head>
+ <body onload="PokemonList()">
+	<div id="pl"></div>
+ </body>
+</html>

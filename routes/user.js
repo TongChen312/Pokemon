@@ -6,7 +6,9 @@ var router=express.Router();
 router.post("/reg",(req,res)=>{
 	var $uname=req.body.uname;
 	var $upwd=req.body.upwd;
-	pool.query("insert into xz_user(uname,upwd) value(?,?)",[$uname,$upwd],(err,result)=>{
+	var $phone=req.body.phone;
+	var $email=req.body.email;
+	pool.query("insert into xz_user(uname,upwd,phone,email) value(?,?,?,?)",[$uname,$upwd,$phone,$email],(err,result)=>{
 		if(err)throw err;
 		if(result.affectedRows>0){
 			res.send("1")
@@ -14,6 +16,14 @@ router.post("/reg",(req,res)=>{
 	});
 });
 
+//用户列表
+router.get("/list",(req,res)=>{
+	var sql="select * from xz_user";
+	pool.query(sql,(err,result)=>{
+		if(err)throw err;
+		res.send(result);
+	});
+});
 
 //登录页面
 router.get("/login/:uname&:upwd",(req,res)=>{
@@ -28,29 +38,6 @@ router.get("/login/:uname&:upwd",(req,res)=>{
 		}
 	});
 });
-
-//宝可梦列表
-router.get("/list",(req,res)=>{
-	pool.query("select * from xz_user",(err,result)=>{
-		if(err)throw err;
-		res.send(result);
-	});
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports=router;

@@ -1,0 +1,141 @@
+ @media screen and (min-width:768px){
+  #big-pic img:nth-child(2){display:none}
+  }
+  @media screen and (max-width:767px){
+    #big-pic img:first-child{display:none}
+    .card-body img{width:100% !important;}
+  }
+/* 渐入动画 */
+  @keyframes into{
+    from{opacity: 0.5;}
+    to{opacity: 1;}
+  }
+/* movie标题样式 */
+  div.card-header{
+    height:50px;
+    background:#03a9f4;
+    padding:5px 15px;
+    font:bold  "Noto Sans",Arial,sans-serif !important;
+    color:white;
+    position: relative;
+  }
+  div.card-header:hover{animation: into 1s linear;}
+  .arrow_down{
+    width:1.5rem;
+    transform: rotate(270deg);
+    position: absolute;
+    right:2rem;
+    top:22px;
+    cursor: pointer;
+  }
+	.arrow_up{
+	  width:1.5rem;
+		transform:rotate(90deg) !important;
+    position: absolute;
+    right:2rem;
+    top:10px;
+    cursor: pointer;
+	}
+  .card-header h3:before{
+    content:"";
+    display:inline-block;
+    width:7px;
+    height:7px;
+    vertical-align: middle;
+    margin:-3px 8px 0px 10px;
+    background:#03a9f4;
+  }
+  .bgc{background: url(../img/background/bg_line.png)}
+/* 单个movie的主体和页脚样式 */
+  div.card-body,div.card-footer{
+    background-color:#DAF2FF;
+    animation: into 0.5s linear;
+  }
+  div.card-footer span::before{
+    content:"";
+    display: inline-block;
+    width:2rem;
+  }
+  .card-footer{
+		border-bottom:5px solid #03a9f4;
+	}
+  .card-footer button{
+    width:75%;
+    height:60px;
+    background:#4B4B4B;
+    font:bolder 1rem "Noto Sans",Arial,sans-serif ;
+    color:white;
+  }
+  .card{margin-bottom:1.2rem}
+  .none{display:none}
+/* 按钮样式 */
+  .btns button:nth-child(2){
+    border-left:none !important;
+    border-right:none !important;
+  }
+  .btns>button{
+    outline: 0;
+    border:0;
+    cursor: pointer;
+		border:2px solid #999;
+		border-radius:60px;
+    transition:all 0.5s ease;
+  }
+  .btns{
+    justify-content: center;
+    margin-top:1.5rem;
+  }
+  .btns button:hover{
+    color:#4B4B4B;
+    background: white;
+  }
+  /*动画系列一览*/
+  #little-view{
+    background-color: #e8e8e8;
+    margin-top:-20px;
+  }
+  .lighten{
+    animation: into 0.1s linear reverse;
+    animation-fill-mode:forwards;
+  }
+  #little-view li{
+    /* border:1px solid gray;  */
+    font-weight:bold;
+    border-radius:5% 5% 0 0;
+    border-bottom:3px solid #03a9f4;
+    background-color: white;
+    box-shadow:2px 2px 2px gray;
+  }
+  #little-view img{
+    border-radius:5% 5% 0 0;
+    width:100%; 
+  }
+  @media screen and (min-width:992px){
+    .col-lg-2{
+      max-width:15% !important;
+    }
+  }
+  @media screen and (max-width:992px) and (min-width:768px){
+    .col-md-4{
+      max-width:30% !important;
+      margin-top:2rem;
+    }
+  }
+  @media screen and (max-width:767px){
+    #little-view .row{
+      display:block;
+    }
+    #little-view .row img{
+      width:125px !important; 
+      border-radius: 0;
+      margin-right:3rem;
+    }
+    #little-view .row li{
+      margin-bottom:1rem;
+      border-radius: 0;
+    }
+    #little-view .row a{
+      text-align: left;
+      padding:0.2rem;
+    }
+  }

@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Pokemon详情</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="shortcut icon" href="img/icon/favicon.ico" type="image/x-icon" />
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/my-ui.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script src="js/echarts.min.js"></script>
+	<script>
+		var urlParams = new URLSearchParams(location.search);
+		var $pid = urlParams.get("pid");
+		function PokemonQuerry() {
+			//将pid用post请求的ajax发送给数据库,获取该宝可梦的能力值
+			return new Promise(
+				function (door) {
+					$.ajax({
+						url: "/pokemon/Ability/" + $pid,
+						type: "get",
+						dataType: "json",
+						success: function (result) {
+							var arr = $("#nengli").find("li div")
+							// $(arr[0]).html()
+							// console.log(arr)
+							//将能力值以列表长度的形式显示在页面中
+							$(arr[0]).css({ "background": "#ff0000de", "width": `${result[0].HP * 2}px` }).next().html(result[0].HP)
+							$(arr[1]).css({ "background": "#ffa700e8", "width": `${result[0].WG * 2}px` }).next().html(result[0].WG)
+							$(arr[2]).css({ "background": "#f3d80f", "width": `${result[0].WF * 2}px` }).next().html(result[0].WF)
+							$(arr[3]).css({ "background": "#6cff00", "width": `${result[0].TG * 2}px` }).next().html(result[0].TG)
+							$(arr[4]).css({ "background": "#09b518", "width": `${result[0].TF * 2}px` }).next().html(result[0].TF)
+							$(arr[5]).css({ "background": "#0ac794d9", "width": `${result[0].SD * 2}px` }).next().html(result[0].SD)
+							$(arr[6]).css({ "background": "#803ea0", "width": `${result[0].SUM / 3}px` }).next().html(result[0].SUM)
+
+							//利用echars组件根据能力值构建画布canvas的六芒星图
+							var dom = document.getElementById("container");
+							var myChart = echarts.init(dom);
+							var app = {};
+							option = null;
+							option = {
+								title: {
+									text: '宝可梦能力值'
+								},
+								tooltip: {},
+								legend: {
+									data: ['个体能力值', '宝可梦平均值']
+								},
+								radar: {
+									// shape: 'circle',
+									name: {
+										textStyle: {
+											color: '#fff',
+											backgroundColor: 'black',
+											borderRadius: 3,
+											padding: [4, 6],
+											fontSize: "20px 黑体"
+										}
+									},
+									indicator: [
+										{ name: '生命', max: 250 },
+										{ name: '物攻', max: 134 },
+										{ name: '特攻', max: 154 },
+										{ name: '速度', max: 150 },
+										{ name: '特防', max: 125 },
+										{ name: '物防', max: 180 }
+									]
+								},
+								series: [{
+									name: '个体能力值 vs 宝可梦平均值',
+									type: 'radar',
+									//  areaStyle: {normal: {}},
+									data: [
+										{
+											value: [result[0].HP, result[0].WG, result[0].TG, result[0].SD, result[0].TF, result[0].WF],
+											name: '个体能力值'
+										},
+										{
+											value: [64, 73, 67, 69, 66, 68],
+											name: '宝可梦平均值'
+										}
+									]
+								}]
+							};
+							if (option && typeof option === "object") {
+								myChart.setOption(option, true);
+							}
+							//每次页面尺寸改变,重绘canvas,使其一直在页面中心
+							myChart.setOption(option, true);
+							window.addEventListener('resize', function () {
+								myChart.resize();
+							}
+							)
+						}
+
+					})
+					// pid.value=$pid;
+					//原生ajax用pid获取数据库中详细信息并以table的形式展示在页面中
+					var xhr = new XMLHttpRequest();
+					xhr.onreadystatechange = function () {
+						if (xhr.readyState === 4 && xhr.status === 200) {
+							var result = xhr.responseText;
+							// console.log(result)
+							// console.log(JSON.parse(result));
+							// console.log(JSON.parse(result)[0]);
+							var pokemon = JSON.parse(result)[0];
+							// console.log(pokemon);
+							poid.innerHTML = pokemon.poid;
+							pname.innerHTML = pokemon.pname;
+							pname1.innerHTML = pokemon.pname1;
+							pname2.innerHTML = pokemon.pname2;
+							character1.innerHTML = pokemon.character1;
+							character2.innerHTML = pokemon.character2;
+							nature.innerHTML = pokemon.nature;
+							nature2.innerHTML = pokemon.nature2;
+							snature.innerHTML = pokemon.snature;
+							height.innerHTML = pokemon.height;
+							weight.innerHTML = pokemon.weight;
+							details.innerHTML = pokemon.details;
+							p_picture.src = pokemon.p_picture;
+						}
+					}
+					xhr.open("get", "/pokemon/Pquerry/" + $pid, true);
+					xhr.send();
+
+					//给箭头用ajax添加上下宝可梦名字
+					$.ajax({
+						url: "/pokemon/prevnext/" + $pid,
+						type: "get",
+						dataTpye: "json",
+						success: function (result) {
+							// var href = (location.href).split("?");
+							// var prev = `${href[0]}?pid=${parseInt($pid) - 1}`
+							// var next = `${href[0]}?pid=${parseInt($pid) + 1}`
+							// console.log(prev, next)
+							var prev = parseInt($pid) - 1
+							var next = parseInt($pid) + 1
+							if ($pid == 1) {
+								$("#next").find("div").html(result[0].pname)
+								// $("#next").find("a").on("click", () => { window.open(next, "_self") })
+							} else if ($pid == 151) {
+								$("#prev").find("div").html(result[0].pname)
+								// $("#prev").find("a").on("click", () => { window.open(prev, "_self") })
+							} else {
+								$("#next").find("div").html(result[1].pname)
+								// $("#next").find("a").on("click", () => { window.open(next, "_self") })
+								$("#prev").find("div").html(result[0].pname)
+								// $("#prev").find("a").on("click", () => { window.open(prev, "_self") })
+								//因为点击跳转页面卡顿十分明显,故采用ajax请求数据(分页效果)
+							}
+							door()
+						}
+					})
+				}
+			)
+		}
+
+		(async function () {
+			await PokemonQuerry()
+
+			//为实现分页不跳转页面效果,封装了两个函数,当点击时重新触发ajax重新获取数据
+			function next() {
+				$pid++
+				PokemonQuerry()
+				var stateObject = {};
+				var title = "修改地址";
+				var newUrl = 'http://127.0.0.1:8080/04.pokemon.html?pid=' + `${$pid}`;
+				//修改地址栏中的地址(只修改url的地址,但是不跳转(偷天换日))
+				history.pushState(stateObject, title, newUrl);
+			}
+
+			function prev() {
+				$pid--
+				PokemonQuerry()
+				var stateObject = {};
+				var title = "修改地址";
+				var newUrl = 'http://127.0.0.1:8080/04.pokemon.html?pid=' + `${$pid}`;
+				//修改地址栏中的地址
+				history.pushState(stateObject, title, newUrl);
+			}
+
+			//如果宝可梦是第一只,只能后退不能前进
+			if ($pid == 1) {
+				$("#next").find("a").on("click", () => { next() })
+			} else if ($pid == 151) {
+			//如果宝可梦是最后一只,只能前进不能后退
+				$("#prev").find("a").on("click", () => { prev() })
+			} else {
+			//如果宝可梦不是第一只也不是最后一只，可后退可前进
+				$("#prev").find("a").on("click", () => { prev() })
+				$("#next").find("a").on("click", () => { next() })
+			}
+
+		})()
+	</script>
+	<style>
+		/* 背景旋转 */
+		@keyframes aa {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			25% {
+				transform: rotate(90deg);
+			}
+
+			50% {
+				transform: rotate(180deg);
+			}
+
+			75% {
+				transform: rotate(270deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		#p_picture {
+			position: absolute;
+			left: 26%;
+			top: 24%;
+			z-index: 50;
+			width: 50%
+		}
+
+		#p2 {
+			position: absolute;
+			left: 17%;
+			top: 14%;
+			z-index: 30;
+			width: calc(100%*2/3)
+		}
+
+		#p3 {
+			animation: aa 3s linear infinite;
+			width: 100%
+		}
+
+		.container.w-50 {
+			position: relative;
+		}
+
+		/* 媒体查询 */
+
+
+		@media screen and (min-width:992px) {
+
+			#data table,
+			#data span {
+				font-size: 1.2rem !important;
+			}
+		}
+
+		@media screen and (max-width:991px) {
+			section table {
+				border-bottom: 0.3rem solid white;
+
+			}
+
+			section ul {
+				width: 50%;
+				margin-top: 0px !important;
+			}
+		}
+
+		@media screen and (max-width:767px) {
+			section ul {
+				width: 65%;
+			}
+		}
+
+		@media screen and (max-width:575px) {
+			section ul {
+				width: 75%;
+			}
+		}
+
+		section ul {
+			margin: auto;
+			margin-top: 15px;
+			border: 1px solid white;
+		}
+
+		section li {
+			display: block !important;
+			margin: 5px;
+		}
+
+		section li div {
+			margin-bottom: -5px;
+			margin-left: 10px;
+			height: 25px;
+			display: inline-block;
+		}
+
+		/* 颜色 */
+		.gress {
+			border-color: #b4f000;
+			background: #92bf19;
+		}
+
+		.fire {
+			border-color: #ff6900;
+			background: #ff3700;
+		}
+
+		.ice {
+			border-color: #14f5ff;
+			background: #00b7ee;
+		}
+
+		/*超能力*/
+		.Psychic {
+			border-color: #f08cdc;
+			background: #dc78c8;
+		}
+
+
+		.ice {
+			border-color: #78dcff;
+			background: #79bcd7;
+		}
+
+		/*毒*/
+		.poison {
+			border-color: #d28cd2;
+			background: #be78be;
+		}
+
+
+		.water {
+			border-color: #14b9ff;
+			background: #0094e5;
+		}
+
+		.ground {
+			border-color: #fac85a;
+			background: #cca142;
+		}
+
+		/*岩石*/
+		.rock {
+			border-color: #b48c64;
+			background: #b48c64;
+		}
+
+		/*龙*/
+		.dragon {
+			border-color: #5078dc;
+			background: #3c64c8;
+		}
+
+
+		.electric {
+			border-color: #ffe100;
+			background: #e4b700;
+		}
+
+		.bug {
+			border-color: #46c846;
+			background: #32b432;
+		}
+
+		.normal {
+			border-color: #dcdcdc;
+			background: #a0a0a0;
+		}
+
+		/*恶*/
+		.dark {
+			border-color: #dcdcdc;
+			background: #a0a0a0;
+		}
+
+
+		.normal {
+			border-color: #dcdcdc;
+			background: #a0a0a0;
+		}
+
+		/*钢*/
+		.steel {
+			border-color: #aac8f0;
+			background: #96b4dc;
+		}
+
+		/*妖精*/
+		.fairy {
+			border-color: #ffafdc;
+			background: #ff7eb8;
+		}
+
+		/* 大背景 */
+		.normal {
+			border-color: #dcdcdc;
+			background: #a0a0a0;
+		}
+
+
+		.fighting {
+			border-color: #dc6900;
+			background: #c85500;
+		}
+
+		section {
+			background: url(img/background/timg.jpg) no-repeat;
+			background-position: -150px -200px;
+			background-size: cover;
+			text-align: center;
+			min-height: 400px !important;
+		}
+
+		section .data {
+			background-image: linear-gradient(10deg, #191a59 25%, #2c2c90 50%, #41a3ff 75%, #5a17b4 100%);
+		}
+
+		section .col-3 {
+			color: #dcdcdc;
+			font: bold 1.5rem 黑体;
+		}
+
+		/* 字体 */
+		#poid {
+			color: #b3eafe;
+			font: 1.6rem "Noto Sans", Arial, sans-serif;
+		}
+
+		#pname {
+			color: white;
+			font: bold 2rem 楷体;
+			text-shadow: 0 0 3px rgb(88, 59, 218), 2px 2px 7px #9be1ff, -2px -2px 7px #9be1ff;
+			z-index: 55;
+		}
+
+		#data table,
+		#data span {
+			font: 1.4rem 华文楷体;
+			color: white
+		}
+
+		#data ul li,
+		ul p {
+			font: 1.4rem 楷体;
+			color: white;
+			margin-top: 0.2rem
+		}
+
+		/* p{margin:0 !important} */
+		#data th {
+			border-top: 0px !important
+		}
+
+		#single a {
+			margin-top: 60%;
+			max-width: 100px;
+			max-height: 100px;
+			border-radius: 50%;
+		}
+
+		#single a:hover {
+			background: #00d2ff;
+			background-size: 80%;
+			opacity: 0.4;
+		}
+
+		/* 表,列细节 */
+		#data ul {
+			text-align: left;
+		}
+
+		#data ul li>div {
+			text-align: right
+		}
+
+		section table span:empty:after {
+			content: "无";
+		}
+
+		#details:before {
+			content: "简述："
+		}
+
+		/* 画布样式 */
+		canvas {
+			background-image: linear-gradient(5deg, #5381f9 20%, #417bfffa 40%, #6085f4 60%, #3a3acc88 80%, #467eff 100%);
+		}
+
+		footer.mt-sm-5 {
+			margin-top: 0 !important
+		}
+	</style>
+</head>
+
+<body onload="PokemonQuerry()">
+	<header id="header"></header>
+	<section>
+		<div class="container" id="single">
+			<div class="row mx-0">
+				<div class="col-12">
+					<p id="poid" class="mt-3"></p>
+					<p id="pname"></p>
+				</div>
+				<div class="col-3" id="prev">
+					<a href="javascript:;" class="d-inline-block"><img src="img/icon/arrow_left_btn.png"></a>
+					<div></div>
+				</div>
+				<div class="w-100 col-6">
+					<img src="" id="p_picture">
+					<img src="img/background/pokemon_circle_bg.png" id="p2">
+					<img src="img/background/pokemon_bg.png" id="p3">
+				</div>
+				<div class="col-3" id="next">
+					<a href="javascript:;" class="d-inline-block"><img src="img/icon/arrow_right_btn.png"></a>
+					<div></div>
+				</div>
+			</div>
+		</div>
+		<div class="data row mx-0 px-0 pt-2" id="data">
+			<table class="table col-lg-7 col-sm-12 mt-lg-5 mx-0">
+				<tr>
+					<th colspan=3>宝可梦日文名字：&nbsp&nbsp<span id="pname1"></span></th>
+					<th colspan=3>宝可梦英文名字：&nbsp&nbsp<span id="pname2"></span></th>
+				</tr>
+				<tr>
+					<th colspan=3 class="green">属性1：&nbsp&nbsp<span id="character1"></span></th>
+					<th colspan=3>属性2：&nbsp&nbsp<span id="character2"></span></th>
+				</tr>
+				<tr>
+					<th colspan=2>特性1：&nbsp&nbsp<span id="nature"></span></th>
+					<th colspan=2>特性2：&nbsp&nbsp<span id="nature2"></span></th>
+					<th colspan=2>隐藏特性：&nbsp&nbsp<span id="snature"></span></th>
+				</tr>
+				<tr>
+					<th colspan=3>身高：&nbsp&nbsp<span id="height"></span></th>
+					<th colspan=3>体重：&nbsp&nbsp<span id="weight"></span></th>
+				</tr>
+			</table>
+			<div class="col-lg-5 col-sm-12" id="nengli">
+				<ul class="list-unstyled list-group">
+					<p class="text-center">能力值</p>
+					<li class="py-0">生命<div></div><span></span>
+					</li>
+					<li class="py-0">物攻<div></div><span></span>
+					</li>
+					<li class="py-0">物防<div></div><span></span>
+					</li>
+					<li class="py-0">特攻<div></div><span></span>
+					</li>
+					<li class="py-0">特防<div></div><span></span>
+					</li>
+					<li class="py-0">速度<div></div><span></span>
+					</li>
+					<li class="py-0">综合<div></div><span></span>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-12">
+				<img src="img/icon/icons8-精灵球-50.png" alt="">
+				<span id="details"></span>
+			</div>
+		</div>
+	</section>
+	<div id="container" style="height:500px;" class="text-align">
+	</div>
+
+	<footer id="footer"></footer>
+</body>
+
+</html>

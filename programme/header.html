@@ -1,85 +1,97 @@
-<!doctype html>
-<html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="Generator" content="EditPlus®">
-  <meta name="Author" content="">
-  <meta name="Keywords" content="">
-  <meta name="Description" content="">
-  <title>Document</title>
-  <style type="text/css">
-	.clear:after{
-		content:"";
-		display:block;
-		clear:both;
-	}
-	*{
-		padding:0;
-		margin:0;
-	}
-	#top-logo{
-		width:100%;
-		height:62px;
-		padding:2px 15% 0 15%;
-		border-bottom:2px solid #dedede;
-	}
-	#top-logo img{
-		width:79px;
-		height:45px;
-		margin-top:5px;
-	}
-	#logo{
-		float:left;
-		width:85px;
-		text-align:center;
-		box-shadow:3px 1px 3px 1px #222222b8;
-		border:1px #000;
-		border-radius:50%;
-	}
-	.top-longer{
-		margin:5px 0px 5px 4px; 
-		width:148px !important;
-		height:50px !important;
-	}
-	#top-logo .top-shorter{margin:8px 2px 0px 2px;}
-	ul{	
-		width:900px;
-		height:62px;
-		text-align:center;
-		list-style-type:none;
-	}
-	li{float:left;}
-  </style>
- </head>
- <body>
-	<header>
-<!--网页头的logo-->	
-		<div id="top-logo" class="clear">
-			<div id="logo"><a href=""><img src="../img/logo-pokemon-79x45.png" alt="" ></a></div>
-			<ul>
-				<li>
-					<a href=""><img src="../img/logo-pokemoncenter-79x45.png" alt="" class="top-shorter"></a>
-				</li>
-				<li>
-					<a href=""><img src="../img/logo-tcgo-79x45.png" alt="" class="top-shorter"></a>
-				</li>
-				<li>
-					<a href=""><img src="../img/logo-pgl-79x45.png" alt="" class="top-shorter"></a>
-				</li>
-				<li>
-					<a href=""><img src="../img/sword-shield-promo-gus-237x80-en.jpg" alt=""  class="top-longer"></a>
-				</li>
-				<li>
-					<a href="" ><img src="../img/sm10-promo-gus-237x80-en.jpg" alt="" class="top-longer"></a>
-				</li>
-				<li>
-					<a href="" ><img src="../img/promo-app-gallery-237x80.jpg" alt="" class="top-longer"></a>
-				</li>
-			</ul>
-		</div>
-	</header>
+<header>
+	<!--网页头的logo-->
+	<div id="top-logo">
+		<ul class="nav justify-content-center">
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link logo-shack"><img src="img/logo/logo-pokemoncenter-79x45.png"
+						class="top-shorter"></a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link logo-shack"><img src="img/logo/logo-tcgo-79x45.png"
+						class="top-shorter"></a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link logo-shack"><img src="img/logo/logo-pgl-79x45.png"
+						class="top-shorter"></a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link"><img src="img/logo/sword-shield-promo-gus-237x80-en.jpg"
+						class="long-logo"></a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link"><img src="img/logo/sm10-promo-gus-237x80-en.jpg" class="long-logo"></a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link"><img src="img/logo/promo-app-gallery-237x80.jpg" class="long-logo"></a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link"><img src="img/logo/pokemon-quest-gus-large.jpg" class="long-logo"></a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link"><img src="img/logo/lets-go-pikachu-eevee-gus-large-en.jpg"
+						class="long-logo"></a>
+			</li>
+		</ul>
+	</div>
+</header>
 <!--导航-->
-	<nav>
-	</nav>
- </body>
-</html>
+<nav class="navbar navbar-expand-md navbar-light bg-light row py-0 mt-1 px-0 mx-0" id="orgTree">
+	<a href="http://127.0.0.1:8080/01.content.html" class="navbar-brand col-md-auto px-0 ml-3 mr-0">
+		<img src="img/logo/logo.png" id="logo" alt="主页">
+	</a>
+	<!--导航按钮-->
+	<button class="navbar-toggler" data-toggle="collapse" data-target="#content">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse justify-content-md-between justify-content-lg-around pl-0 px-0 mx-0"
+		id="content">
+		<ul class="navbar-nav" style="width:100%;">
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link" cartoon><span>动画</span></a>
+			</li>
+			<li class="nav-item">
+				<a href="/02.movie.html" class="nav-link" movie target="电影">电影</a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link" commodity>
+					<img src="img/icon/icons8-pokebag-50-2.png" alt="" class="d-none" />商品
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link" application>应用</a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link" game>游戏</a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link" card>卡牌</a>
+			</li>
+			<li class="nav-item">
+				<a href="javascript:;" class="nav-link" active>活动</a>
+			</li>
+			<li class="nav-item">
+				<a href="/03.pokemonslistxx.html" class="nav-link" handbook target="图鉴">
+					<img src="img/icon/icons8-图鉴-50.png" class="d-none" />图鉴
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+<div id="Top">
+	<img src="img/icon/icons8-手链-48.png">
+	<p style="color:red"">返顶</p>
+</div>
+<script>
+	$(window).on("scroll", function () {
+		console.log($(window).scrollTop())
+		if ($(window).scrollTop() >= 800) {
+			$("#Top").show().addClass("logo-shack");
+		} else {
+			$("#Top").hide();
+		}
+	})
+	$("#Top").on("click","img",function(){
+		
+	})
+</script>
+</header>
