@@ -3,10 +3,7 @@ const mysql=require('mysql');
 const bodyParser=require('body-parser');
 const user=require('./routes/user.js');
 const pokemon=require('./routes/pokemon.js');
-<<<<<<< HEAD
 // const cors=require("cors");
-=======
->>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 
 var app=express();
 app.listen(8080);

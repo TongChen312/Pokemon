@@ -7,7 +7,6 @@
 		nav .nav-link,nav .nav-item{padding:0;margin:1px;}
 		nav .nav-link{box-shadow:1px 1px 1px 1px gray}
 		nav a{border-bottom:none !important;font:none !important;}
-<<<<<<< HEAD
 		[commodity]{position:absolute;top:32%;right:8%;}
 		[commodity]>img{display:block !important;margin:0}
 		[handbook]{position:absolute;bottom:5%;right:8%;}
@@ -20,12 +19,6 @@
 			background:white !important;
 			color:red !important;
 		}
-=======
-		[commodity]{position:absolute;top:4%;right:6%;}
-		[commodity]>img{display:block !important;margin:0}
-		[handbook]{position:absolute;top:50%;right:6%;}
-		[handbook]>img{display:block !important;margin:0}
->>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 	}
 	#top-logo{
 		height:62px;
@@ -54,12 +47,9 @@
 		animation: swing 1s ease;
 	}
 /*nav*/
-<<<<<<< HEAD
 	/* nav{
 		overflow: hidden;
 	} */
-=======
->>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 	nav li{
 		width: calc(100%/8);
 		overflow:hidden;
@@ -154,7 +144,6 @@
 	nav button{
 		position:absolute;
 		left:2rem;top:1.5rem;
-<<<<<<< HEAD
 	}
 
 	#Top{
@@ -171,6 +160,3 @@
 
 	
 	
-=======
-	}
->>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c

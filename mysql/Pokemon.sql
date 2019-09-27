@@ -16,7 +16,6 @@ CREATE TABLE xz_user(
 /**('编号','#编号','中文','日文','英文','属性1 ','属性2 ','特性1','特性2','隐藏特性','身高m','体重kg','描述','img/Pokemon/'),**/
 CREATE TABLE Pokemons(
   pid INT PRIMARY KEY AUTO_INCREMENT,#宝可梦编号
-<<<<<<< HEAD
 	poid VARCHAR(16),					#宝可梦编号
   pname VARCHAR(16),				#宝可梦名字
   pname1 VARCHAR(16),				#宝可梦日文名字
@@ -30,27 +29,11 @@ CREATE TABLE Pokemons(
 	weight VARCHAR(16),				#体重
   details VARCHAR(256),			#描述
   p_picture VARCHAR(128)		#宝可梦图片
-=======
-	poid VARCHAR(16),             # #宝可梦编号
-  pname VARCHAR(16),					#宝可梦名字
-  pname1 VARCHAR(16),				#宝可梦日文名字
-  pname2 VARCHAR(16),				#宝可梦英文名字
-  character1 CHAR(8),							#属性1
-  character2 CHAR(8),						#属性2
-  nature VARCHAR(16),					#特性1
-  nature2 VARCHAR(16),				#特性2
-  snature VARCHAR(16),				#隐藏特性
-	height VARCHAR(16),          #身高
-	weight VARCHAR(16),         #体重
-  details VARCHAR(256),						#描述
-  p_picture VARCHAR(128)	#宝可梦图片
->>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 );
 
 /**宝可梦能力值**/
 CREATE TABLE Race_Value(
   pid INT PRIMARY KEY AUTO_INCREMENT,#宝可梦编号
-<<<<<<< HEAD
   HP SMAllINT,					#生命值
   WG SMAllINT,					#物攻
   WF SMAllINT,					#物防
@@ -58,22 +41,12 @@ CREATE TABLE Race_Value(
   TF SMAllINT,					#特防
   SD SMAllINT,					#速度
   SUM SMAllINT					#总和
-=======
-  HP TINYINT,					#生命值
-  WG TINYINT,				#物攻
-  WF TINYINT,					#物防
-  TG TINYINT,					#特攻
-  TF TINYINT,					#特防
-  SD TINYINT,					#速度
-  SUM TINYINT				#总和
->>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 );
 
 /**宝可梦招式**/
 CREATE TABLE Moves(
   mid INT PRIMARY KEY AUTO_INCREMENT,#招式
   mname VARCHAR(16),				#中文名
-<<<<<<< HEAD
   mname2 VARCHAR(32),				#日文名
   mname3 VARCHAR(32),				#英文名
   character1 VARCHAR(16),		#属性
@@ -90,28 +63,14 @@ CREATE TABLE Myteam(
 	team2 VARCHAR(50),
 	team3 VARCHAR(50)
 );
-=======
-  mname2 VARCHAR(32),			#日文名
-  mname3 VARCHAR(32),			#英文名
-  character1 VARCHAR(16),			#属性
-  classify VARCHAR(16),				#分类
-  power CHAR(16),								#威力
-  hit_rate CHAR(16),							#命中率
-  PP CHAR(16)                    #PP
-);
-
->>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 
 /**主页轮播图片**/
 /**静态图片**/
 
 /**-----------------------------数据导入---------------------------------**/
-<<<<<<< HEAD
 /**我的队伍**/
 INSERT INTO Myteam VALUES
 (NULL,'妙蛙种子,杰尼龟,小火龙','乘龙,快龙,迷你龙,走路草,霸王花,卡蒂狗','三地鼠,地鼠');
-=======
->>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 /**宝可梦基础信息**/
 INSERT INTO Pokemons VALUES  
 /**('编号','#编号','日文','英文','属性1 ','属性2 ','特性1','特性2','隐藏特性','身高m','体重kg','描述','img/Pokemon/'),**/
@@ -272,7 +231,6 @@ INSERT INTO Pokemons VALUES
 	(NULL,'#151','梦幻','ミュウ','Mew','超能力',NULL,'同步',NULL,NULL,'0.4m','4.0kg','梦幻没有固定的栖息地。终日都在世界各地游走，但一般人们都是见不到它的。梦幻富有智慧、好奇心、童心和无私奉献的精神。同时梦幻具有难以置信的适应力，能够在水中自由穿梭，在空中任意翱翔。','img/Pokemon/151Mew.png');
 
 
-<<<<<<< HEAD
 /**宝可梦能力值**/
 INSERT INTO Race_Value VALUES
 /**#生命值 #物攻 #物防 #特攻 #特防 #速度 #总和**/
@@ -432,11 +390,6 @@ INSERT INTO Race_Value VALUES
 
 /**宝可梦招式**/
 INSERT INTO Moves VALUES                                                        
-=======
-
-/**宝可梦招式**/
-INSERT INTO Moves VALUES                                                           
->>>>>>> 43fb344e14354fadb4fbd7c4221cbd7d06783b0c
 /**(编号,"中文名","日文名","英文名","属性","分类",威力,命中,ＰＰ,)**/
 	(1,'拍击','はたく','Pound','一般','物理','40','100',35),
 	(2,'空手劈','からてチョップ','Karate Chop','格斗','物理','50','100',25),
