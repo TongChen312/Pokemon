@@ -23,11 +23,13 @@
 				<img src="img/poster/1280x458 (2)-thumb-1280x458-13513.jpg" class="w-100">
 			</div>
 			<div class="carousel-item">
-				<img src="img/poster/a333d6b0d26a81b4a3cef3bba13785c1300b26ce-thumb-128-thumb-1280x458-11940.jpg" class="w-100">
+				<img src="img/poster/a333d6b0d26a81b4a3cef3bba13785c1300b26ce-thumb-128-thumb-1280x458-11940.jpg"
+					class="w-100">
 			</div>
 			<div class="carousel-item">
 				<a href="03.pokemonslistxx.html">
-					<img src="img/poster/0faf9b805cc71d1c3f8513e63735bdcc17cf9d8b-thumb-1280x458-12717.jpg" class="w-100">
+					<img src="img/poster/0faf9b805cc71d1c3f8513e63735bdcc17cf9d8b-thumb-1280x458-12717.jpg"
+						class="w-100">
 				</a>
 			</div>
 			<div class="carousel-item">
@@ -116,14 +118,31 @@
 	</div>
 	<br>
 	<br>
-	<hr>
-	<hr>
-	<hr>
-	<hr>
-	<h1 class="text-center">内容(未完成)</h1>
-	<hr>
-	<hr>
-	<hr>
+	<br>
+	<br>
+	<!-- 手写轮播图 -->
+	<main id="main">
+	<div id="banner">
+		<div id="btn-left"></div>
+		<ul id="ul">
+			<li><a href="javascript:;"><img src="img/Pokemon/132Ditto.png"><span>88</span></a></li>
+			<li><a href="javascript:;"><img src="img/Pokemon/052Meowth.png"><span>99</span></a></li>
+			<li><a href="javascript:;"><img src="img/Pokemon/055Golduck.png"><span>108</span></a></li>
+			<li><a href="javascript:;"><img src="img/Pokemon/064Kadabra.png"><span>109</span></a></li>
+			<li><a href="javascript:;"><img src="img/Pokemon/065Alakazam.png"><span>151</span></a></li>
+			<li><a href="javascript:;"><img src="img/Pokemon/072Tentacool.png"><span>44</span></a></li>
+			<li><a href="javascript:;"><img src="img/Pokemon/081Magnemite.png"><span>33</span></a></li>
+			<li><a href="javascript:;"><img src="img/Pokemon/085Dodrio.png"><span>22</span></a></li>
+			<li><a href="javascript:;"><img src="img/Pokemon/093Haunter.png"><span>15</span></a></li>
+			<li><a href="javascript:;"><img src="img/Pokemon/115Kangaskhan.png"><span>1</span></a></li>
+		</ul>
+		<div id="btn-right"></div>
+	</div>
+</main>
+	<br>
+	<br>
+	<br>
+	<br>
 
 	<!-- 尾部栅格 -->
 	<div class="container px-0" id="new-card">
@@ -205,12 +224,13 @@
 			// if($(window).scrollTop()>1200 && window.innerWidth>=992){		
 			// offsetTop <  scrollTop + clientHeigth
 			if ((($(window).scrollTop()) / (window.innerWidth)) > 1.2 && window.innerWidth >= 992) {
-				$("#left1").css("animation", "left1 0.5s linear 0.1s 1 reverse")
-				$("#left2").css("animation", "left2 0.5s linear 0.1s 1 reverse")
-				$("#mid1").css("animation", "mid1 0.5s linear 0.1s 1 reverse")
-				$("#mid2").css("animation", "mid2 0.5s linear 0.1s 1 reverse")
-				$("#right1").css("animation", "right1 0.5s linear 0.1s 1 reverse")
-				$("#right2").css("animation", "right2 0.5s linear 0.1s 1 reverse")
+				var same = ' 0.5s linear 0.1s 1 reverse'
+				$("#left1").css("animation", "left1" + same)
+				$("#left2").css("animation", "left2" + same)
+				$("#mid1").css("animation", "mid1" + same)
+				$("#mid2").css("animation", "mid2" + same)
+				$("#right1").css("animation", "right1" + same)
+				$("#right2").css("animation", "right2" + same)
 				$("#new-card").find("div.card").css("animation-fill-mode", "both")
 			}
 			// if(($(window).scrollTop()>)
@@ -218,6 +238,102 @@
 		})
 
 	</script>
+	<script>
+		$.ajax({
+			url: "/pokemon/Plist",
+			type: "get",
+			dataTpye: "json",
+			success: function (result) {
+				//获取要修改的元素的父元素ul,得出子元素li集合
+				var lis = $("#ul").find("li")
+				var span = $("#span").find("span")
+				for (var i = 0; i < lis.length; i++) {
+					//找出给一个遍历出来的li的唯一子元素div  的唯一子元素img
+					var $img = $(lis[i]).find("img")
+					var $span = $(lis[i]).find("span")
+					//随机生成的一个数字,要求是图片地址数组imgs的下标
+					var random = Math.ceil(Math.random() * (result.length - 1));
+					// console.log(random)
+					$img.attr("src", `${result[random].p_picture}`)
+					$span.html(result[random].pid)
+					//每遍历一次将这次遍历出来的图片地址在原数组imgs上删除一次
+					//保证下一次不会选择到同一个图片地址
+					result.splice(random, 1)
+				}
+			}
+		})
+
+
+
+
+		$("#ul").find("li:nth-child(4)").addClass("change").siblings().addClass("back")
+		var allow = 0
+		var LIWIDTH = ($(document.body).width() / 5);//li宽度是页面宽度100%
+		$("img").width(LIWIDTH) 
+		$("li").width(LIWIDTH)
+		$("li").height(LIWIDTH)
+		$("#ul").css("margin-left", -LIWIDTH)
+		$(window).on("resize", function () {
+			//如果页面的小改变,重新获取图片的宽高和内容,以保证响应式
+			window.location.reload()
+		})
+
+		function canGo() {//控制能否按箭头
+		var left=$("#btn-left")
+		var right=$("#btn-right")
+			allow = 1;
+			left.css({ background: "gray" });
+			right.css({ background: "gray" });
+			setTimeout(function () {
+				allow = 0;
+				right.css({ background: "red" });
+				left.css({ background: "red" })
+			}, 2000);
+		}
+
+		function right() {
+			if (allow == 0) {
+				canGo()
+				var ul=$("#ul")
+				ul.find("li").addClass("transition back").removeClass("change")
+				ul.find("li:nth-child(5)").addClass("transition change").removeClass("back")
+				ul.animate({ marginLeft: -2 * LIWIDTH }, "slow", "swing", function () {
+					$(this).css({ marginLeft: -LIWIDTH });
+					$(this).children("li").first().remove().clone(true).appendTo("#ul")
+				});
+			}
+		}
+
+		$("#btn-right").on("click", function () {
+			right()
+		})
+
+		$("#btn-left").on("click", function () {
+			if (allow == 0) {
+				canGo()
+				$("#ul").find("li").addClass("transition back").removeClass("change")
+				$("#ul").find("li:nth-child(3)").addClass("transition change").removeClass("back")
+				$("#ul").animate({ marginLeft: 0 }, "slow", "swing", function () {
+					$(this).css({ marginLeft: -LIWIDTH });
+					$(this).children("li").last().remove().clone(true).prependTo("#ul");
+				});
+			}
+		})
+
+
+		var auto = setInterval(right, 2000);
+		$("#ul").hover(function () {
+			clearInterval(auto);
+		}, function () {
+			auto = setInterval(right, 2000)
+		});
+		$("#btn-left").hover(function () {
+			clearInterval(auto), function () {
+				auto = setInterval(right, 2000)
+			}
+		})
+	</script>
+
 </body>
 
 </html>

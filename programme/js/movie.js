@@ -10,8 +10,8 @@ $(function(){
       $(".card-footer").addClass("none");
        var others=$(this).parent().parent().siblings().children().children(".card-header").children("img");//除了点击的其他箭头
 			 //只要一点击,就将其他的箭头arrow都改为向下
-       others.removeClass("arrow_up");
-       others.addClass("arrow_down")
+       others.removeClass("arrow_up")
+       .addClass("arrow_down")
       // console.log($(this).parent().parent().siblings().children().children(".card-header").children("img"))
       //修改元素
       if(arrow.hasClass("arrow_down")){//如果arrow箭头指向下
