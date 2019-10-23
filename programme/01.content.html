@@ -122,23 +122,23 @@
 	<br>
 	<!-- 手写轮播图 -->
 	<main id="main">
-	<div id="banner">
-		<div id="btn-left"></div>
-		<ul id="ul">
-			<li><a href="javascript:;"><img src="img/Pokemon/132Ditto.png"><span>88</span></a></li>
-			<li><a href="javascript:;"><img src="img/Pokemon/052Meowth.png"><span>99</span></a></li>
-			<li><a href="javascript:;"><img src="img/Pokemon/055Golduck.png"><span>108</span></a></li>
-			<li><a href="javascript:;"><img src="img/Pokemon/064Kadabra.png"><span>109</span></a></li>
-			<li><a href="javascript:;"><img src="img/Pokemon/065Alakazam.png"><span>151</span></a></li>
-			<li><a href="javascript:;"><img src="img/Pokemon/072Tentacool.png"><span>44</span></a></li>
-			<li><a href="javascript:;"><img src="img/Pokemon/081Magnemite.png"><span>33</span></a></li>
-			<li><a href="javascript:;"><img src="img/Pokemon/085Dodrio.png"><span>22</span></a></li>
-			<li><a href="javascript:;"><img src="img/Pokemon/093Haunter.png"><span>15</span></a></li>
-			<li><a href="javascript:;"><img src="img/Pokemon/115Kangaskhan.png"><span>1</span></a></li>
-		</ul>
-		<div id="btn-right"></div>
-	</div>
-</main>
+		<div id="banner">
+			<div id="btn-left"></div>
+			<ul id="ul">
+				<li><a href="javascript:;"><img src="img/Pokemon/132Ditto.png"><span>88</span></a></li>
+				<li><a href="javascript:;"><img src="img/Pokemon/052Meowth.png"><span>99</span></a></li>
+				<li><a href="javascript:;"><img src="img/Pokemon/055Golduck.png"><span>108</span></a></li>
+				<li><a href="javascript:;"><img src="img/Pokemon/064Kadabra.png"><span>109</span></a></li>
+				<li><a href="javascript:;"><img src="img/Pokemon/065Alakazam.png"><span>151</span></a></li>
+				<li><a href="javascript:;"><img src="img/Pokemon/072Tentacool.png"><span>44</span></a></li>
+				<li><a href="javascript:;"><img src="img/Pokemon/081Magnemite.png"><span>33</span></a></li>
+				<li><a href="javascript:;"><img src="img/Pokemon/085Dodrio.png"><span>22</span></a></li>
+				<li><a href="javascript:;"><img src="img/Pokemon/093Haunter.png"><span>15</span></a></li>
+				<li><a href="javascript:;"><img src="img/Pokemon/115Kangaskhan.png"><span>1</span></a></li>
+			</ul>
+			<div id="btn-right"></div>
+		</div>
+	</main>
 	<br>
 	<br>
 	<br>
@@ -269,18 +269,28 @@
 		$("#ul").find("li:nth-child(4)").addClass("change").siblings().addClass("back")
 		var allow = 0
 		var LIWIDTH = ($(document.body).width() / 5);//li宽度是页面宽度100%
-		$("img").width(LIWIDTH) 
-		$("li").width(LIWIDTH)
-		$("li").height(LIWIDTH)
-		$("#ul").css("margin-left", -LIWIDTH)
+		$("img").width(LIWIDTH)
+		$("li").css({"height":LIWIDTH,"width":LIWIDTH})
+		$("#ul").css({"margin-left": -LIWIDTH,"position":"absolute","top":LIWIDTH/2})
+		$("#banner").height(LIWIDTH * 2)
+		var timer
 		$(window).on("resize", function () {
 			//如果页面的小改变,重新获取图片的宽高和内容,以保证响应式
-			window.location.reload()
+			//因为页面改变尺寸会多次触发事件--->需要用到节流(一段时间内,多次触发的事件,只会响应一次)
+			//如果当前timer不是空,说明有一个等待的请求,还未发送。就停止前面的等待
+			if (timer !== undefined) {
+				clearInterval(timer)
+			}
+			//在重新开始下一轮等待
+			timer = setTimeout(function () {
+				//当200ms内,未发生浏览器尺寸改变,才会执行
+				window.location.reload()
+			}, 1000)
 		})
 
 		function canGo() {//控制能否按箭头
-		var left=$("#btn-left")
-		var right=$("#btn-right")
+			var left = $("#btn-left")
+			var right = $("#btn-right")
 			allow = 1;
 			left.css({ background: "gray" });
 			right.css({ background: "gray" });
@@ -294,7 +304,7 @@
 		function right() {
 			if (allow == 0) {
 				canGo()
-				var ul=$("#ul")
+				var ul = $("#ul")
 				ul.find("li").addClass("transition back").removeClass("change")
 				ul.find("li:nth-child(5)").addClass("transition change").removeClass("back")
 				ul.animate({ marginLeft: -2 * LIWIDTH }, "slow", "swing", function () {
